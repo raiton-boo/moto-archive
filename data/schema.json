@@ -27,11 +27,11 @@
       }
     },
     "profile": { "type": "string" },
-    "market_price": {
+    "price_range": {
       "type": "object",
       "properties": {
-        "new": { "$ref": "#/definitions/price_range" },
-        "used": { "$ref": "#/definitions/price_range" }
+        "min": { "type": ["integer", "null"] },
+        "max": { "type": ["integer", "null"] }
       }
     },
     "timeline": {
