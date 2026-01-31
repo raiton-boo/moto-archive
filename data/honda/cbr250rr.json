@@ -1,0 +1,634 @@
+{
+  "maker": "Honda",
+  "model": "CBR250RR",
+  "slug": "honda-cbr250rr",
+  "status": "published",
+  "metadata": {
+    "created_at": {
+      "iso": "2026-01-31T18:15:00Z",
+      "unix": 1769850900,
+      "label": "2026-01-31 16:36"
+    },
+    "updated_at": {
+      "iso": "2026-01-31T20:00:00Z",
+      "unix": 1769857200,
+      "label": "2026-01-31 18:57"
+    }
+  },
+  "profile": "1990年(MC22)と2017年(MC51)に登場。世代を超えてクラス最高峰を追求し続けるクォーター・スーパースポーツ。",
+  "market_price": {
+    "new": { "min": 724000, "max": 1012000 },
+    "used": { "min": 376100, "max": 2200000 }
+  },
+  "timeline": [
+    {
+      "model_code": "MC22",
+      "release_years": [1990, 1991, 1992],
+      "slug": "cbr250rr-mc22-45ps",
+      "profile": "250cc超高回転型4気筒スーパースポーツ。アルミツインチューブフレームとガルアームを採用し、徹底した低重心と慣性マス集中を実現した規制前45PSモデル。",
+      "basic_info": {
+        "type_grade_name": "CBR250RR",
+        "model_change_type": "新登場",
+        "ride_capacity": 2
+      },
+      "dimensions": {
+        "length_mm": 1975,
+        "width_mm": 675,
+        "height_mm": 1080,
+        "wheelbase_mm": 1345,
+        "ground_clearance_mm": 130,
+        "seat_height_mm": 725,
+        "curb_weight_kg": 157,
+        "dry_weight_kg": 142,
+        "min_turning_radius_m": 2.9
+      },
+      "engine": {
+        "model": "MC14E",
+        "type": "4ストローク",
+        "layout": "並列（直列）",
+        "cylinders": 4,
+        "cooling": "水冷",
+        "displacement_cc": 249,
+        "valve_system": "DOHC",
+        "valves_per_cylinder": 4,
+        "bore_mm": 48.5,
+        "stroke_mm": 33.8,
+        "compression_ratio": 11.5,
+        "ps": 45,
+        "ps_rpm": 15000,
+        "torque_kgf_m": 2.5,
+        "torque_rpm": 12000,
+        "fuel_efficiency_km_l": 40.0,
+        "efficiency_test_speed_kmh": 60,
+        "lubrication": "ウェットサンプ式",
+        "start_system": ["セルフスターター式"]
+      },
+      "maintenance_and_fuel": {
+        "fuel_supply": "キャブレター",
+        "fuel_device_model": "VP20",
+        "tank_capacity_l": 13,
+        "cruising_range_km": 520.0,
+        "ignition": "フルトランジスタ式",
+        "spark_plug": "CR9EH-9",
+        "spark_plug_qty": 4,
+        "battery": "YTX7L-BS",
+        "oil_capacity_total_l": null,
+        "oil_capacity_change_l": null,
+        "oil_capacity_filter_l": null,
+        "oil_viscosity": null
+      },
+      "drivetrain": {
+        "clutch_type": ["湿式", "多板"],
+        "transmission": ["リターン式", 6],
+        "operation": "フットシフト",
+        "primary_reduction": 2.966,
+        "secondary_reduction": 3.058,
+        "gear_ratios": {
+          "1": 2.733,
+          "2": 2.0,
+          "3": 1.59,
+          "4": 1.333,
+          "5": 1.153,
+          "6": 1.035
+        },
+        "final_drive": "チェーン",
+        "sprocket_f": 17,
+        "sprocket_r": 52,
+        "chain_size": "428",
+        "chain_links": 134
+      },
+      "chassis_and_brakes": {
+        "frame": "バックボーン",
+        "caster_deg": 24.0,
+        "trail_mm": 89,
+        "suspension_f": "テレスコピックフォーク",
+        "suspension_f_type": null,
+        "suspension_r": "スイングアーム式",
+        "suspension_r_shocks": null,
+        "brake_f": "油圧式ダブルディスク",
+        "brake_r": "油圧式ディスク",
+        "brake_oil_std": null
+      },
+      "tires": {
+        "front": {
+          "size": "110/70R17",
+          "structure": "ラジアル",
+          "load_index": 54,
+          "speed_symbol": "H",
+          "type": "チューブレス",
+          "pressure_kpa": null
+        },
+        "rear": {
+          "size": "140/60R17",
+          "structure": "ラジアル",
+          "load_index": 63,
+          "speed_symbol": "H",
+          "type": "チューブレス",
+          "pressure_kpa": null
+        },
+        "rim_width_f": null,
+        "rim_width_r": null
+      },
+      "electrical_equipment": {
+        "headlight_hi_w": 60,
+        "headlight_lo_w": 35,
+        "headlight_type": null,
+        "tail_light_type": null,
+        "speedometer_type": null
+      }
+    },
+    {
+      "model_code": "MC22",
+      "release_years": [1994],
+      "slug": "cbr250rr-mc22-40ps",
+      "profile": "カムギアトレーンを継承しつつ、中低速域の出力を強化した自主規制対応40PSモデル。CBR900RR譲りのデザインを採用したMC22最終型。",
+      "basic_info": {
+        "type_grade_name": "CBR250RR",
+        "model_change_type": "マイナーチェンジ",
+        "ride_capacity": 2
+      },
+      "dimensions": {
+        "length_mm": 1975,
+        "width_mm": 675,
+        "height_mm": 1080,
+        "wheelbase_mm": 1345,
+        "ground_clearance_mm": 130,
+        "seat_height_mm": 735,
+        "curb_weight_kg": 158,
+        "dry_weight_kg": 143,
+        "min_turning_radius_m": 2.9
+      },
+      "engine": {
+        "model": "MC14E",
+        "type": "4ストローク",
+        "layout": "並列（直列）",
+        "cylinders": 4,
+        "cooling": "水冷",
+        "displacement_cc": 249,
+        "valve_system": "DOHC",
+        "valves_per_cylinder": 4,
+        "bore_mm": 48.5,
+        "stroke_mm": 33.8,
+        "compression_ratio": 11.5,
+        "ps": 40,
+        "ps_rpm": 14500,
+        "torque_kgf_m": 2.4,
+        "torque_rpm": 11500,
+        "fuel_efficiency_km_l": 37.0,
+        "efficiency_test_speed_kmh": 60,
+        "lubrication": "ウェットサンプ式",
+        "start_system": ["セルフスターター式"]
+      },
+      "maintenance_and_fuel": {
+        "fuel_supply": "キャブレター",
+        "fuel_device_model": "VP20",
+        "tank_capacity_l": 13,
+        "cruising_range_km": 481.0,
+        "ignition": "フルトランジスタ式",
+        "spark_plug": "CR9EH-9",
+        "spark_plug_qty": 4,
+        "battery": "YTX7L-BS",
+        "oil_capacity_total_l": null,
+        "oil_capacity_change_l": null,
+        "oil_capacity_filter_l": null,
+        "oil_viscosity": null
+      },
+      "drivetrain": {
+        "clutch_type": ["湿式", "多板"],
+        "transmission": ["リターン式", 6],
+        "operation": "フットシフト",
+        "primary_reduction": 2.966,
+        "secondary_reduction": 3.058,
+        "gear_ratios": {
+          "1": 2.733,
+          "2": 2.0,
+          "3": 1.59,
+          "4": 1.333,
+          "5": 1.153,
+          "6": 1.035
+        },
+        "final_drive": "チェーン",
+        "sprocket_f": 17,
+        "sprocket_r": 52,
+        "chain_size": "428",
+        "chain_links": 134
+      },
+      "chassis_and_brakes": {
+        "frame": "バックボーン",
+        "caster_deg": 24.0,
+        "trail_mm": 89,
+        "suspension_f": "テレスコピックフォーク",
+        "suspension_f_type": null,
+        "suspension_r": "スイングアーム式",
+        "suspension_r_shocks": null,
+        "brake_f": "油圧式ダブルディスク",
+        "brake_r": "油圧式ディスク",
+        "brake_oil_std": null
+      },
+      "tires": {
+        "front": {
+          "size": "110/70R17",
+          "structure": "ラジアル",
+          "load_index": 54,
+          "speed_symbol": "H",
+          "type": "チューブレス",
+          "pressure_kpa": null
+        },
+        "rear": {
+          "size": "140/60R17",
+          "structure": "ラジアル",
+          "load_index": 63,
+          "speed_symbol": "H",
+          "type": "チューブレス",
+          "pressure_kpa": null
+        },
+        "rim_width_f": null,
+        "rim_width_r": null
+      },
+      "electrical_equipment": {
+        "headlight_hi_w": 60,
+        "headlight_lo_w": 35,
+        "headlight_type": null,
+        "tail_light_type": null,
+        "speedometer_type": null
+      }
+    },
+    {
+      "model_code": "MC51",
+      "release_years": [2017, 2018, 2019],
+      "slug": "cbr250rr-mc51-38ps",
+      "profile": "2000年代の終わりごろに始まった、250ccフルカウルスポーツモデル人気の中で、ホンダが投入したCBR250R（MC41）は、単気筒エンジンの採用や生産をタイで行うなどにより、42.8万円（税抜）の戦略的価格を実現し、成功をおさめることができた。その上でのCBR250RR（MC51）は、さらに高性能なスポーツモデルを求めるライダーに向けて、水冷4ストローク並列2気筒DOHCエンジンを搭載して登場したモデル。エンジンやフレームが新設計されただけでなく、250ccクラスではじめて採用されたスロットル・バイ・ワイヤシステム（アクセル開度を、ワイヤーではなく電気信号で伝達する）や、ヘッドライトを含む全灯火のLED化など、スーパースポーツと呼ばれるための多くのトピックに彩られている。",
+      "basic_info": {
+        "type_grade_name": "CBR250RR / ABS",
+        "model_change_type": "新登場",
+        "ride_capacity": 2
+      },
+      "dimensions": {
+        "length_mm": 2065,
+        "width_mm": 725,
+        "height_mm": 1095,
+        "wheelbase_mm": 1390,
+        "ground_clearance_mm": 145,
+        "seat_height_mm": 790,
+        "curb_weight_kg": 167,
+        "dry_weight_kg": null,
+        "min_turning_radius_m": 2.9
+      },
+      "engine": {
+        "model": "MC51E",
+        "type": "4ストローク",
+        "layout": "並列（直列）",
+        "cylinders": 2,
+        "cooling": "水冷",
+        "displacement_cc": 249,
+        "valve_system": "DOHC",
+        "valves_per_cylinder": 4,
+        "bore_mm": 62,
+        "stroke_mm": 41.3,
+        "compression_ratio": 11.5,
+        "ps": 38,
+        "ps_rpm": 12500,
+        "torque_kgf_m": 2.3,
+        "torque_rpm": 11000,
+        "fuel_efficiency_km_l": 40.1,
+        "efficiency_test_speed_kmh": 60,
+        "lubrication": "ウェットサンプ式",
+        "start_system": ["セルフスターター式"]
+      },
+      "maintenance_and_fuel": {
+        "fuel_supply": "フューエルインジェクション",
+        "fuel_device_model": "PGM-FI",
+        "fuel_type": "レギュラー",
+        "tank_capacity_l": 14,
+        "cruising_range_km": 561.4,
+        "ignition": "フルトランジスタ式",
+        "spark_plug": "SILMAR8C9",
+        "spark_plug_qty": 2,
+        "battery": "YTZ7S",
+        "oil_capacity_total_l": 2.4,
+        "oil_capacity_change_l": 1.9,
+        "oil_capacity_filter_l": 2.1,
+        "oil_viscosity": "10W-30"
+      },
+      "drivetrain": {
+        "clutch_type": ["湿式", "多板"],
+        "transmission": ["リターン式", 6],
+        "operation": "フットシフト",
+        "primary_reduction": 2.781,
+        "secondary_reduction": 2.928,
+        "gear_ratios": {
+          "1": 3.272,
+          "2": 2.187,
+          "3": 1.727,
+          "4": 1.421,
+          "5": 1.222,
+          "6": 1.068
+        },
+        "final_drive": "チェーン",
+        "sprocket_f": 14,
+        "sprocket_r": 41,
+        "chain_size": "520",
+        "chain_links": 112
+      },
+      "chassis_and_brakes": {
+        "frame": "鋼管トラス構造フレーム",
+        "caster_deg": 24.5,
+        "trail_mm": 92,
+        "suspension_f": "テレスコピックフォーク",
+        "suspension_f_type": "倒立フォーク",
+        "suspension_r": "スイングアーム式",
+        "suspension_r_shocks": 1,
+        "brake_f": "油圧式ディスク",
+        "brake_r": "油圧式ディスク",
+        "brake_oil_std": "DOT 4"
+      },
+      "tires": {
+        "front": {
+          "size": "110/70R17",
+          "structure": "ラジアル",
+          "load_index": 54,
+          "speed_symbol": "H",
+          "type": "チューブレス",
+          "pressure_kpa": 2.0
+        },
+        "rear": {
+          "size": "140/70R17",
+          "structure": "ラジアル",
+          "load_index": 66,
+          "speed_symbol": "H",
+          "type": "チューブレス",
+          "pressure_kpa": 2.25
+        },
+        "rim_width_f": 2.75,
+        "rim_width_r": 4.0
+      },
+      "electrical_equipment": {
+        "headlight_hi_w": null,
+        "headlight_lo_w": null,
+        "headlight_type": "LED",
+        "tail_light_type": "LED",
+        "speedometer_type": "デジタル",
+        "gear_position_indicator": true,
+        "fuel_gauge": true,
+        "tachometer": true,
+        "clock": true,
+        "twin_trip": true,
+        "ride_mode": true,
+        "abs": true
+      }
+    },
+    {
+      "model_code": "MC51",
+      "release_years": [2020, 2021, 2022],
+      "slug": "cbr250rr-mc51-41ps",
+      "profile": "250cc（軽二輪）クラスのフルカウルスポーツ、CBR250RR（MC51)が、マイナーチェンジを受けた。新形状のピストン採用やマフラー内部構造の変更などによって、従来比+3ps（41ps）の最高出力と+2Nm（25Nm）の最大トルクを得ていた。また、クラッチレバーの操作負荷の軽減と、シフトダウン時の後輪安定性を向上させるアシスト＆スリッパークラッチを採用した。また、純正オプションとて、クイックシフターも準備された。ABS（アンチロックブレーキシステム）を標準搭載。",
+      "basic_info": {
+        "type_grade_name": "CBR250RR",
+        "model_change_type": "マイナーチェンジ",
+        "ride_capacity": 2
+      },
+      "dimensions": {
+        "length_mm": 2065,
+        "width_mm": 725,
+        "height_mm": 1095,
+        "wheelbase_mm": 1390,
+        "ground_clearance_mm": 145,
+        "seat_height_mm": 790,
+        "curb_weight_kg": 168,
+        "dry_weight_kg": null,
+        "min_turning_radius_m": 2.9
+      },
+      "engine": {
+        "model": "MC51E",
+        "type": "4ストローク",
+        "layout": "並列（直列）",
+        "cylinders": 2,
+        "cooling": "水冷",
+        "displacement_cc": 249,
+        "valve_system": "DOHC",
+        "valves_per_cylinder": 4,
+        "bore_mm": 62,
+        "stroke_mm": 41.3,
+        "compression_ratio": 12.1,
+        "ps": 41,
+        "ps_rpm": 13000,
+        "torque_kgf_m": 2.5,
+        "torque_rpm": 11000,
+        "fuel_efficiency_km_l": 40.1,
+        "efficiency_test_speed_kmh": 60,
+        "lubrication": "ウェットサンプ式",
+        "start_system": ["セルフスターター式"]
+      },
+      "maintenance_and_fuel": {
+        "fuel_supply": "フューエルインジェクション",
+        "fuel_device_model": "PGM-FI",
+        "fuel_type": "レギュラー",
+        "tank_capacity_l": 14,
+        "cruising_range_km": 561.4,
+        "ignition": "フルトランジスタ式",
+        "spark_plug": "SILMAR8C9",
+        "spark_plug_qty": 2,
+        "battery": "YTZ7S",
+        "oil_capacity_total_l": 2.4,
+        "oil_capacity_change_l": 1.9,
+        "oil_capacity_filter_l": 2.1,
+        "oil_viscosity": "10W-30"
+      },
+      "drivetrain": {
+        "clutch_type": ["湿式", "多板"],
+        "transmission": ["リターン式", 6],
+        "operation": "フットシフト",
+        "primary_reduction": 2.781,
+        "secondary_reduction": 2.928,
+        "gear_ratios": {
+          "1": 3.181,
+          "2": 2.187,
+          "3": 1.727,
+          "4": 1.421,
+          "5": 1.222,
+          "6": 1.068
+        },
+        "final_drive": "チェーン",
+        "sprocket_f": 14,
+        "sprocket_r": 41,
+        "chain_size": "520",
+        "chain_links": 112
+      },
+      "chassis_and_brakes": {
+        "frame": "鋼管トラス構造フレーム",
+        "caster_deg": 24.5,
+        "trail_mm": 92,
+        "suspension_f": "テレスコピックフォーク",
+        "suspension_f_type": "倒立フォーク",
+        "suspension_r": "スイングアーム式",
+        "suspension_r_shocks": 1,
+        "brake_f": "油圧式ディスク",
+        "brake_r": "油圧式ディスク",
+        "brake_oil_std": "DOT 4"
+      },
+      "tires": {
+        "front": {
+          "size": "110/70R17",
+          "structure": "ラジアル",
+          "load_index": 54,
+          "speed_symbol": "H",
+          "type": "チューブレス",
+          "pressure_kpa": 2.0
+        },
+        "rear": {
+          "size": "140/70R17",
+          "structure": "ラジアル",
+          "load_index": 66,
+          "speed_symbol": "H",
+          "type": "チューブレス",
+          "pressure_kpa": 2.25
+        },
+        "rim_width_f": 2.75,
+        "rim_width_r": 4.0
+      },
+      "electrical_equipment": {
+        "headlight_hi_w": null,
+        "headlight_lo_w": null,
+        "headlight_type": "LED",
+        "tail_light_type": "LED",
+        "speedometer_type": "デジタル",
+        "gear_position_indicator": true,
+        "fuel_gauge": true,
+        "tachometer": true,
+        "clock": true,
+        "twin_trip": true,
+        "ride_mode": true,
+        "abs": true,
+        "slipper_clutch": true
+      }
+    },
+    {
+      "model_code": "MC51",
+      "release_years": [2023, 2024, 2025],
+      "slug": "cbr250rr-mc51-42ps",
+      "profile": "平成32年（令和2年）排ガス規制に適合し、排気ガス記号を含めた型式は、8BK-MC51と改められた。外観はキープコンセプトながら、フロントからサイドにかけてレイヤー構造となり、よりエッジを利かせたデザインとなった。並列2気筒エンジンは、規制をクリアしつつ、細部の見直しでこれまでよりも1PSアップの42PSとなった。また、トラクションコントロールを装備。フロントの倒立フォークにはショーワ製のSFF-BP（セパレート・ファンクション・フロントフォーク・ビッグピストン）が採用された。ハザードランプも新装備。",
+      "basic_info": {
+        "type_grade_name": "CBR250RR",
+        "model_change_type": "マイナーチェンジ",
+        "ride_capacity": 2
+      },
+      "dimensions": {
+        "length_mm": 2065,
+        "width_mm": 725,
+        "height_mm": 1110,
+        "wheelbase_mm": 1390,
+        "ground_clearance_mm": 148,
+        "seat_height_mm": 790,
+        "curb_weight_kg": 168,
+        "dry_weight_kg": null,
+        "min_turning_radius_m": 2.9
+      },
+      "engine": {
+        "model": "MC51E",
+        "type": "4ストローク",
+        "layout": "並列（直列）",
+        "cylinders": 2,
+        "cooling": "水冷",
+        "displacement_cc": 249,
+        "valve_system": "DOHC",
+        "valves_per_cylinder": 4,
+        "bore_mm": 62,
+        "stroke_mm": 41.3,
+        "compression_ratio": 12.5,
+        "ps": 42,
+        "ps_rpm": 13500,
+        "torque_kgf_m": 2.5,
+        "torque_rpm": 10750,
+        "fuel_efficiency_km_l": 40.1,
+        "efficiency_test_speed_kmh": 60,
+        "lubrication": "ウェットサンプ式",
+        "start_system": ["セルフスターター式"]
+      },
+      "maintenance_and_fuel": {
+        "fuel_supply": "フューエルインジェクション",
+        "fuel_device_model": "PGM-FI",
+        "fuel_type": "レギュラー",
+        "tank_capacity_l": 14,
+        "cruising_range_km": 561.4,
+        "ignition": "フルトランジスタ式",
+        "spark_plug": "SILMAR8C9",
+        "spark_plug_qty": 2,
+        "battery": "YTZ7S",
+        "oil_capacity_total_l": 2.4,
+        "oil_capacity_change_l": 1.9,
+        "oil_capacity_filter_l": 2.1,
+        "oil_viscosity": "10W-30"
+      },
+      "drivetrain": {
+        "clutch_type": ["湿式", "多板"],
+        "transmission": ["リターン式", 6],
+        "operation": "フットシフト",
+        "primary_reduction": 2.781,
+        "secondary_reduction": 3.0,
+        "gear_ratios": {
+          "1": 3.272,
+          "2": 2.285,
+          "3": 1.772,
+          "4": 1.428,
+          "5": 1.208,
+          "6": 1.041
+        },
+        "final_drive": "チェーン",
+        "sprocket_f": 14,
+        "sprocket_r": 41,
+        "chain_size": "520",
+        "chain_links": 112
+      },
+      "chassis_and_brakes": {
+        "frame": "鋼管トラス構造フレーム",
+        "caster_deg": 24.5,
+        "trail_mm": 92,
+        "suspension_f": "テレスコピックフォーク",
+        "suspension_f_type": "倒立フォーク",
+        "suspension_r": "スイングアーム式",
+        "suspension_r_shocks": 1,
+        "brake_f": "油圧式ディスク",
+        "brake_r": "油圧式ディスク",
+        "brake_oil_std": "DOT 4"
+      },
+      "tires": {
+        "front": {
+          "size": "110/70R17",
+          "structure": "ラジアル",
+          "load_index": 54,
+          "speed_symbol": "H",
+          "type": "チューブレス",
+          "pressure_kpa": 2.0
+        },
+        "rear": {
+          "size": "140/70R17",
+          "structure": "ラジアル",
+          "load_index": 66,
+          "speed_symbol": "H",
+          "type": "チューブレス",
+          "pressure_kpa": 2.25
+        },
+        "rim_width_f": 2.75,
+        "rim_width_r": 4.0
+      },
+      "electrical_equipment": {
+        "headlight_hi_w": null,
+        "headlight_lo_w": null,
+        "headlight_type": "LED",
+        "tail_light_type": "LED",
+        "speedometer_type": "デジタル",
+        "gear_position_indicator": true,
+        "fuel_gauge": true,
+        "tachometer": true,
+        "clock": true,
+        "twin_trip": true,
+        "ride_mode": true,
+        "abs": true,
+        "slipper_clutch": true,
+        "traction_control": true,
+        "hazard_lamp": true,
+        "emergency_stop_signal": true
+      }
+    }
+  ]
+}
