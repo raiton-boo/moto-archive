@@ -1,0 +1,54 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Motorcycle Master Data Schema",
+  "type": "object",
+  "required": ["maker", "model", "slug", "timeline"],
+  "properties": {
+    "maker": {
+      "type": "string",
+      "enum": ["Honda", "Yamaha", "Suzuki", "Kawasaki"]
+    },
+    "model": { "type": "string" },
+    "slug": { "type": "string", "pattern": "^[a-z0-9-]+$" },
+    "status": { "type": "string", "enum": ["published", "draft", "archived"] },
+    "metadata": {
+      "type": "object",
+      "properties": {
+        "created_at": { "$ref": "#/definitions/date_info" },
+        "updated_at": { "$ref": "#/definitions/date_info" }
+      }
+    },
+    "timeline": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "model_code", "engine"],
+        "properties": {
+          "id": { "type": "string" },
+          "is_current": { "type": "boolean" },
+          "model_code": { "type": "string" },
+          "emission_code": { "type": ["string", "null"] },
+          "engine": {
+            "type": "object",
+            "properties": {
+              "bore_mm": { "type": "number", "minimum": 10 },
+              "stroke_mm": { "type": "number", "minimum": 10 },
+              "ps": { "type": "integer" },
+              "kw": { "type": "integer" },
+              "bore_stroke_ratio": { "type": "number" }
+            }
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "date_info": {
+      "type": "object",
+      "properties": {
+        "iso": { "type": "string", "format": "date-time" },
+        "label": { "type": "string" }
+      }
+    }
+  }
+}
