@@ -2,18 +2,19 @@
   "$schema": "../schema.json",
   "maker": "Honda",
   "model": "CBR250RR",
+  "displacement_class": 250,
   "slug": "honda-cbr250rr",
   "assets_dir": "/assets/images/honda/cbr250rr/",
   "thumbnail": "mc51-42ps-grandprix-red.png",
   "status": "published",
   "metadata": {
     "created_at": {
-      "iso": "2026-01-31T18:15:00Z",
+      "iso": "2026-01-31T16:36:00Z",
       "label": "2026-01-31 16:36"
     },
     "updated_at": {
-      "iso": "2026-01-31T23:32:06Z",
-      "label": "2026-01-31 23:32"
+      "iso": "2026-01-31T23:55:00Z",
+      "label": "2026-01-31 23:55"
     }
   },
   "profile": "1990年(MC22)と2017年(MC51)に登場。世代を超えてクラス最高峰を追求し続けるクォーター・スーパースポーツ。",
@@ -39,7 +40,8 @@
       "basic_info": {
         "type_grade_name": "CBR250RR",
         "model_change_type": "新登場",
-        "ride_capacity": 2
+        "ride_capacity": 2,
+        "categories": ["レーサーレプリカ"]
       },
       "dimensions": {
         "length_mm": 1975,
@@ -164,7 +166,8 @@
       "basic_info": {
         "type_grade_name": "CBR250RR",
         "model_change_type": "マイナーチェンジ",
-        "ride_capacity": 2
+        "ride_capacity": 2,
+        "categories": ["レーサーレプリカ"]
       },
       "dimensions": {
         "length_mm": 1975,
@@ -289,7 +292,8 @@
       "basic_info": {
         "type_grade_name": "CBR250RR",
         "model_change_type": "新登場",
-        "ride_capacity": 2
+        "ride_capacity": 2,
+        "categories": ["スーパースポーツ"]
       },
       "dimensions": {
         "length_mm": 2065,
@@ -422,7 +426,8 @@
       "basic_info": {
         "type_grade_name": "CBR250RR ABS",
         "model_change_type": "新登場",
-        "ride_capacity": 2
+        "ride_capacity": 2,
+        "categories": ["スーパースポーツ"]
       },
       "dimensions": {
         "length_mm": 2065,
@@ -555,7 +560,8 @@
       "basic_info": {
         "type_grade_name": "CBR250RR",
         "model_change_type": "マイナーチェンジ",
-        "ride_capacity": 2
+        "ride_capacity": 2,
+        "categories": ["スーパースポーツ"]
       },
       "dimensions": {
         "length_mm": 2065,
@@ -689,7 +695,8 @@
       "basic_info": {
         "type_grade_name": "CBR250RR",
         "model_change_type": "マイナーチェンジ",
-        "ride_capacity": 2
+        "ride_capacity": 2,
+        "categories": ["スーパースポーツ"]
       },
       "dimensions": {
         "length_mm": 2065,

@@ -2,11 +2,13 @@ import json
 import os
 import difflib
 import re
+import shutil
 from datetime import datetime
 import questionary
 from rich.console import Console
 from rich.table import Table
 from rich.panel import Panel
+from rich.rule import Rule
 from git import Repo
 from jsonschema import validate, ValidationError
 
@@ -14,17 +16,11 @@ console = Console()
 
 
 class MotoDataManager:
-    """
-    バイクデータの品質管理クラス。
-    スペック計算、アセット検証、メタデータの整合性（ISO/Label）チェックを行う。
-    """
-
     def __init__(self, file_path):
         self.file_path = file_path
         with open(file_path, "r", encoding="utf-8") as f:
             self.raw_original = f.read()
             self.data = json.loads(self.raw_original)
-
         self.detected_indent = self._detect_indent(self.raw_original)
         try:
             self.repo = Repo(".", search_parent_directories=True)
@@ -32,7 +28,6 @@ class MotoDataManager:
             self.repo = None
 
     def _detect_indent(self, text):
-        """現在のファイルからインデント設定を推測する"""
         lines = text.splitlines()
         for line in lines:
             match = re.match(r"^([ \t]+)\S", line)
@@ -41,19 +36,33 @@ class MotoDataManager:
                 return "\t" if "\t" in indent_str else len(indent_str)
         return 2
 
+    def ensure_metadata_structure(self):
+        if "metadata" not in self.data:
+            self.data["metadata"] = {}
+        for key in ["created_at", "updated_at"]:
+            if key not in self.data["metadata"]:
+                self.data["metadata"][key] = {"iso": "", "label": ""}
+
+    def insert_displacement_class(self, value):
+        """'model'キーの直後に 'displacement_class' を挿入する"""
+        new_data = {}
+        for k, v in self.data.items():
+            new_data[k] = v
+            if k == "model":
+                new_data["displacement_class"] = value
+        self.data = new_data
+
     def get_git_dates(self):
-        """Gitの履歴から『最初』と『最新』のコミット日時を取得する"""
         if not self.repo:
             return None, None
         commits = list(self.repo.iter_commits(paths=self.file_path))
         if not commits:
             return None, None
-        created_at = datetime.fromtimestamp(commits[-1].authored_date)
-        updated_at = datetime.fromtimestamp(commits[0].authored_date)
-        return created_at, updated_at
+        return datetime.fromtimestamp(
+            commits[-1].authored_date
+        ), datetime.fromtimestamp(commits[0].authored_date)
 
     def get_os_dates(self):
-        """OSの統計情報を取得（コピーなどで作成日がズレる可能性に注意）"""
         stat = os.stat(self.file_path)
         created_at = datetime.fromtimestamp(
             getattr(stat, "st_birthtime", stat.st_ctime)
@@ -62,11 +71,7 @@ class MotoDataManager:
         return created_at, updated_at
 
     def process_universal_specs(self):
-        """全車種共通のスペック計算と、ISO/Labelの矛盾チェックを行う"""
         logs = []
-        warnings = []
-
-        # 1. 数値スペックの計算
         for item in self.data.get("timeline", []):
             eng = item.get("engine", {})
             m_code = item.get("model_code", "Unknown")
@@ -79,31 +84,9 @@ class MotoDataManager:
                 kw = int(eng["ps"] * 0.7355)
                 eng["kw"] = kw
                 logs.append(f"[{m_code}] Power: {kw}kW")
-
-        # 2. メタデータのISO/Label整合性チェック
-        meta = self.data.get("metadata", {})
-        for key in ["created_at", "updated_at"]:
-            dt_info = meta.get(key, {})
-            iso_val = dt_info.get("iso")
-            label_val = dt_info.get("label")
-            if iso_val and label_val:
-                # ISOからパースした日時とLabelを比較（分単位まで）
-                try:
-                    iso_dt = datetime.fromisoformat(iso_val.replace("Z", ""))
-                    label_dt = datetime.strptime(label_val, "%Y-%m-%d %H:%M")
-                    if iso_dt.strftime("%Y-%m-%d %H:%M") != label_val:
-                        warnings.append(
-                            f"Date Mismatch ({key}): ISOとLabelが一致しません。修正が必要です。"
-                        )
-                except ValueError:
-                    warnings.append(
-                        f"Format Error ({key}): 日付の形式が正しくありません。"
-                    )
-
-        return logs, warnings
+        return logs
 
     def get_formatted_json(self):
-        """配列をコンパクトに整形したJSON文字列を生成する"""
         content = json.dumps(
             self.data, indent=self.detected_indent, ensure_ascii=False, sort_keys=False
         )
@@ -116,7 +99,6 @@ class MotoDataManager:
         return content + "\n"
 
     def validate_schema(self, schema_path="schema.json"):
-        """構造バリデーション"""
         if not os.path.exists(schema_path):
             return True, "Schema missing"
         try:
@@ -126,12 +108,12 @@ class MotoDataManager:
                 instance=v_data,
                 schema=json.load(open(schema_path, "r", encoding="utf-8")),
             )
-            return True, "Success"
+            return True, "Valid"
         except ValidationError as e:
-            return False, e.message
+            path = ".".join([str(p) for p in e.path])
+            return False, f"At {path}: {e.message}"
 
     def show_diff(self):
-        """差分表示"""
         new_content = self.get_formatted_json()
         diff = list(
             difflib.unified_diff(
@@ -143,7 +125,6 @@ class MotoDataManager:
             )
         )
         if not diff:
-            console.print("[yellow]変更はありません。[/yellow]")
             return False
         for line in diff:
             if line.startswith("+"):
@@ -155,9 +136,26 @@ class MotoDataManager:
         return True
 
     def save(self):
-        """保存"""
-        with open(self.file_path, "w", encoding="utf-8") as f:
-            f.write(self.get_formatted_json())
+        formatted = self.get_formatted_json()
+        bak_path = self.file_path + ".bak"
+        shutil.copy2(self.file_path, bak_path)
+        try:
+            with open(self.file_path, "w", encoding="utf-8") as f:
+                f.write(formatted)
+            os.remove(bak_path)
+        except Exception as e:
+            shutil.move(bak_path, self.file_path)
+            raise e
+
+
+def parse_iso(iso_str):
+    if not iso_str:
+        return "-"
+    try:
+        dt = datetime.fromisoformat(iso_str.replace("Z", ""))
+        return dt.strftime("%Y-%m-%d %H:%M")
+    except:
+        return "Invalid"
 
 
 def format_meta(dt):
@@ -169,6 +167,12 @@ def format_meta(dt):
 
 
 def main():
+    console.print(Rule(style="cyan"))
+    console.print(
+        "[bold cyan]MOTO DATA MANAGER[/bold cyan] [dim]v2.7[/dim]", justify="center"
+    )
+    console.print(Rule(style="cyan"))
+
     data_root = "./data"
     json_files = [
         os.path.join(r, f)
@@ -184,114 +188,133 @@ def main():
         return
 
     manager = MotoDataManager(target_file)
+    manager.ensure_metadata_structure()
 
-    # 1. 自動計算と整合性警告
-    logs, warnings = manager.process_universal_specs()
-    if logs:
-        console.print(Panel("\n".join(logs), title="Calculated", border_style="cyan"))
-    if warnings:
-        console.print(
-            Panel(
-                "\n".join(warnings),
-                title="Consistency Warnings",
-                border_style="bold yellow",
-            )
-        )
-
-    # 2. メタデータソース収集
     git_c, git_u = manager.get_git_dates()
-    os_c, _ = manager.get_os_dates()
+    os_c, os_u = manager.get_os_dates()
     now = datetime.now()
     meta = manager.data.get("metadata", {})
 
-    table = Table(title=f"Metadata Analysis: {target_file}")
-    table.add_column("Source", style="bold")
-    table.add_column("Created At (作成)", style="green")
-    table.add_column("Updated At (更新)", style="magenta")
-    table.add_row(
-        "手書き情報 (JSON)",
-        meta.get("created_at", {}).get("label", "-"),
-        meta.get("updated_at", {}).get("label", "-"),
-    )
-    if git_c:
-        table.add_row(
-            "Git履歴 (最初/最新)",
-            git_c.strftime("%Y-%m-%d %H:%M"),
-            git_u.strftime("%Y-%m-%d %H:%M"),
+    # 1. 健康診断
+    status_table = Table(box=None, header_style="bold cyan")
+    status_table.add_column("Property", width=12)
+    status_table.add_column("Handwritten (Label)")
+    status_table.add_column("Internal (ISO)")
+    status_table.add_column("Status")
+    mismatch = False
+    for key, name in [("created_at", "Created"), ("updated_at", "Updated")]:
+        l, i = meta.get(key, {}).get("label", "-"), meta.get(key, {}).get("iso", "")
+        parsed = parse_iso(i)
+        is_ok = l == parsed
+        status_table.add_row(
+            name,
+            l,
+            f"[red]{parsed}[/]" if not is_ok else parsed,
+            "[green]✔ OK[/]" if is_ok else "[bold red]✘ MISMATCH[/]",
         )
-    table.add_row("OS統計情報 (作成)", os_c.strftime("%Y-%m-%d %H:%M"), "-")
-    table.add_row("システム現在時刻", "-", now.strftime("%Y-%m-%d %H:%M"))
-    console.print(table)
+        if not is_ok:
+            mismatch = True
+    console.print(
+        Panel(
+            status_table,
+            title="[bold white]JSON Integrity Check[/bold white]",
+            border_style="cyan",
+        )
+    )
 
-    # 3. 作成日時 (created_at) の選択
-    c_mode = questionary.select(
-        "作成日時 (created_at) をどうしますか？",
-        choices=[
-            questionary.Choice(
-                f"現状維持 ({meta.get('created_at', {}).get('label', 'N/A')})",
-                value="keep",
-            ),
-            questionary.Choice(
-                f"Gitの最初のコミットに合わせる ({git_c.strftime('%Y-%m-%d') if git_c else 'N/A'})",
-                value="git",
-            ),
-            questionary.Choice(
-                f"OSの作成日時に合わせる ({os_c.strftime('%Y-%m-%d')})", value="os"
-            ),
-            questionary.Choice("手動入力する", value="manual"),
-        ],
-    ).ask()
+    # 2. リファレンス表示
+    ref_table = Table(box=None, header_style="dim")
+    ref_table.add_column("Source", width=15)
+    ref_table.add_column("Created")
+    ref_table.add_column("Updated")
+    ref_table.add_row(
+        "Git History",
+        git_c.strftime("%y-%m-%d %H:%M") if git_c else "-",
+        git_u.strftime("%y-%m-%d %H:%M") if git_u else "-",
+    )
+    ref_table.add_row(
+        "File System (OS)",
+        f"[yellow]{os_c.strftime('%y-%m-%d %H:%M')}[/]",
+        os_u.strftime("%y-%m-%d %H:%M"),
+    )
+    console.print(
+        Panel(ref_table, title="[dim]Reference Timelines[/dim]", border_style="dim")
+    )
 
-    if c_mode == "git" and git_c:
-        manager.data["metadata"]["created_at"] = format_meta(git_c)
-    elif c_mode == "os":
-        manager.data["metadata"]["created_at"] = format_meta(os_c)
-    elif c_mode == "manual":
-        val = questionary.text("New Created Label (YYYY-MM-DD HH:MM):").ask()
-        manager.data["metadata"]["created_at"]["label"] = val
-        manager.data["metadata"]["created_at"]["iso"] = (
-            now.isoformat() + "Z"
-        )  # ISOは操作時刻をベース
+    # 3. スペック計算 & 同期
+    spec_logs = manager.process_universal_specs()
+    if spec_logs:
+        console.print(
+            Panel(
+                "\n".join(spec_logs),
+                title="[cyan]Calculated Fields[/cyan]",
+                border_style="cyan",
+            )
+        )
 
-    # 4. 更新日時 (updated_at) の選択
-    u_mode = questionary.select(
-        "更新日時 (updated_at) をどうしますか？",
-        choices=[
-            questionary.Choice(
-                f"手書き情報を維持 ({meta.get('updated_at', {}).get('label', 'N/A')})",
-                value="keep",
-            ),
-            questionary.Choice(
-                f"Gitの最新コミットに合わせる ({git_u.strftime('%m/%d %H:%M') if git_u else 'N/A'})",
-                value="git",
-            ),
-            questionary.Choice(
-                f"現在時刻にする ({now.strftime('%m/%d %H:%M')})", value="now"
-            ),
-            questionary.Choice("手動入力する", value="manual"),
-        ],
-    ).ask()
+    if mismatch and questionary.confirm("ISOの不一致を自動同期しますか？").ask():
+        for k in ["created_at", "updated_at"]:
+            l = meta.get(k, {}).get("label")
+            if l:
+                meta[k]["iso"] = (
+                    datetime.strptime(l, "%Y-%m-%d %H:%M").isoformat() + "Z"
+                )
 
-    if u_mode == "git" and git_u:
-        manager.data["metadata"]["updated_at"] = format_meta(git_u)
-    elif u_mode == "now":
-        manager.data["metadata"]["updated_at"] = format_meta(now)
-    elif u_mode == "manual":
-        val = questionary.text("New Updated Label (YYYY-MM-DD HH:MM):").ask()
-        manager.data["metadata"]["updated_at"]["label"] = val
-        manager.data["metadata"]["updated_at"]["iso"] = now.isoformat() + "Z"
+    # 4. 新規項目の補完 (displacement_class / categories)
+    if "displacement_class" not in manager.data:
+        class_choices = [
+            questionary.Choice(str(c), value=c)
+            for c in [50, 125, 250, 400, 750, 1000, 1100]
+        ]
+        val = questionary.select(
+            "displacement_classを選択 (model直下に挿入):", choices=class_choices
+        ).ask()
+        manager.insert_displacement_class(val)
+
+    # 各タイムラインのカテゴリーチェック
+    category_list = [
+        "ネイキッド",
+        "スーパースポーツ",
+        "レーサーレプリカ",
+        "アメリカン",
+        "ネオクラシック",
+        "スクーター",
+        "ミニバイク",
+        "モタード",
+        "アドベンチャー",
+        "ツアラー",
+        "オフロード",
+        "スポーツツアラー",
+        "ストリート",
+        "ビジネス",
+    ]
+
+    for item in manager.data.get("timeline", []):
+        basic = item.get("basic_info", {})
+        if "categories" not in basic or not basic["categories"]:
+            m_code = item.get("model_code", "Unknown")
+            console.print(f"[yellow]⚠ カテゴリー未設定: {m_code}[/yellow]")
+            selected = questionary.checkbox(
+                f"[{m_code}] カテゴリーを複数選択 (スペースで選択/解除):",
+                choices=category_list,
+            ).ask()
+            basic["categories"] = selected
 
     # 5. 保存
     valid, msg = manager.validate_schema()
     if not valid:
-        console.print(Panel(f"Schema Error: {msg}", border_style="bold red"))
-        if not questionary.confirm("エラーを無視して保存しますか？").ask():
+        console.print(
+            Panel(
+                msg, title="[bold red]Validation Failed[/bold red]", border_style="red"
+            )
+        )
+        if not questionary.confirm("保存を強行しますか？").ask():
             return
 
     if manager.show_diff():
-        if questionary.confirm("保存しますか？").ask():
+        if questionary.confirm("変更を保存しますか？").ask():
             manager.save()
-            console.print("[bold green]Success![/bold green]")
+            console.print("[bold green]✨ Data safely synchronized![/bold green]")
 
 
 if __name__ == "__main__":

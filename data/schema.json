@@ -2,20 +2,36 @@
   "$schema": "http://json-schema.org/draft-07/schema#",
   "title": "Motorcycle Master Data Schema",
   "type": "object",
-  "required": ["maker", "model", "slug", "timeline"],
+  "required": ["maker", "model", "displacement_class", "slug", "timeline"],
   "properties": {
+    "$schema": { "type": "string" },
     "maker": {
       "type": "string",
       "enum": ["Honda", "Yamaha", "Suzuki", "Kawasaki"]
     },
     "model": { "type": "string" },
+    "displacement_class": {
+      "type": "integer",
+      "enum": [50, 125, 250, 400, 750, 1000, 1100],
+      "description": "免許・税制区分（検索用）"
+    },
     "slug": { "type": "string", "pattern": "^[a-z0-9-]+$" },
+    "assets_dir": { "type": "string" },
+    "thumbnail": { "type": "string" },
     "status": { "type": "string", "enum": ["published", "draft", "archived"] },
     "metadata": {
       "type": "object",
       "properties": {
         "created_at": { "$ref": "#/definitions/date_info" },
         "updated_at": { "$ref": "#/definitions/date_info" }
+      }
+    },
+    "profile": { "type": "string" },
+    "market_price": {
+      "type": "object",
+      "properties": {
+        "new": { "$ref": "#/definitions/price_range" },
+        "used": { "$ref": "#/definitions/price_range" }
       }
     },
     "timeline": {
@@ -28,16 +44,59 @@
           "is_current": { "type": "boolean" },
           "model_code": { "type": "string" },
           "emission_code": { "type": ["string", "null"] },
-          "engine": {
+          "release_years": { "type": "array", "items": { "type": "integer" } },
+          "slug": { "type": "string" },
+          "profile": { "type": "string" },
+          "basic_info": {
             "type": "object",
             "properties": {
-              "bore_mm": { "type": "number", "minimum": 10 },
-              "stroke_mm": { "type": "number", "minimum": 10 },
+              "type_grade_name": { "type": "string" },
+              "model_change_type": { "type": "string" },
+              "ride_capacity": { "type": "integer" },
+              "categories": {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "enum": [
+                    "ネイキッド",
+                    "スーパースポーツ",
+                    "レーサーレプリカ",
+                    "アメリカン",
+                    "ネオクラシック",
+                    "スクーター",
+                    "ミニバイク",
+                    "モタード",
+                    "アドベンチャー",
+                    "ツアラー",
+                    "オフロード",
+                    "スポーツツアラー",
+                    "ストリート",
+                    "ビジネス"
+                  ]
+                }
+              }
+            }
+          },
+          "dimensions": { "type": "object" },
+          "engine": {
+            "type": "object",
+            "required": ["displacement_cc", "bore_mm", "stroke_mm"],
+            "properties": {
+              "model": { "type": "string" },
+              "displacement_cc": { "type": "integer" },
+              "bore_mm": { "type": "number" },
+              "stroke_mm": { "type": "number" },
               "ps": { "type": "integer" },
               "kw": { "type": "integer" },
               "bore_stroke_ratio": { "type": "number" }
             }
-          }
+          },
+          "maintenance_and_fuel": { "type": "object" },
+          "drivetrain": { "type": "object" },
+          "chassis_and_brakes": { "type": "object" },
+          "tires": { "type": "object" },
+          "electrical_equipment": { "type": "object" },
+          "urls": { "type": "array", "items": { "type": "string" } }
         }
       }
     }
@@ -48,6 +107,13 @@
       "properties": {
         "iso": { "type": "string", "format": "date-time" },
         "label": { "type": "string" }
+      }
+    },
+    "price_range": {
+      "type": "object",
+      "properties": {
+        "min": { "type": "integer" },
+        "max": { "type": "integer" }
       }
     }
   }
