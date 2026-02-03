@@ -3,7 +3,7 @@
   "maker": "Honda",
   "model": "VFR750R",
   "displacement_class": 750,
-  "slug": "honda-vfr750r-rc30",
+  "slug": "honda-vfr750r",
   "assets_dir": "/assets/images/honda/vfr750r-rc30/",
   "thumbnail": "vfr750r-rc30-standard.png",
   "status": "published",
@@ -13,34 +13,29 @@
       "label": "2026-02-01 00:45"
     },
     "updated_at": {
-      "iso": "2026-02-01T00:45:00Z",
-      "label": "2026-02-01 00:45"
+      "iso": "2026-02-04T02:15:00Z",
+      "label": "2026-02-04 02:15"
     }
   },
   "profile": "1987年に発売されたVFR750Rは、世界耐久ロードレースで2年連続優勝を果たしたRVF750のレーサーレプリカモデル。チタン合金製コンロッドやクロモリ浸炭鋼カムシャフト、アルミ製燃料タンク、FRP製カウルなど、当時の市販車の常識を超えたレーススペックパーツを惜しみなく投入した伝説のホモロゲーションモデルである。",
   "price_range": {
-    "new": {
-      "min": null,
-      "max": null
-    },
-    "used": {
-      "min": 7150000,
-      "max": 7678000
-    }
+    "new": { "min": null, "max": null },
+    "used": { "min": 7150000, "max": 7678000 }
   },
   "timeline": [
     {
-      "id": "honda-vfr750r-rc30-1987",
+      "id": "honda-vfr750r-rc30",
       "is_current": false,
       "model_code": "RC30",
       "emission_code": null,
       "release_years": [1987, 1988],
-      "slug": "vfr750r-rc30-1987",
+      "slug": "vfr750r-rc30",
       "profile": "1987年に発売された国内仕様モデル。RVF750の技術を直接フィードバックした究極のレーサーレプリカとして登場した。",
       "basic_info": {
-        "type_grade_name": "VFR750R",
+        "grade_name": "VFR750R",
         "model_change_type": "新登場",
         "ride_capacity": 1,
+        "min_turning_radius_m": 3.3,
         "categories": ["レーサーレプリカ"]
       },
       "dimensions": {
@@ -52,12 +47,13 @@
         "seat_height_mm": 785,
         "curb_weight_kg": 201,
         "dry_weight_kg": 180,
-        "min_turning_radius_m": 3.3
+        "caster_angle": "24.83",
+        "trail_mm": 91
       },
       "engine": {
         "model": "RC07E",
         "type": "4ストローク",
-        "layout": "V型",
+        "layout": "V型4気筒",
         "cylinders": 4,
         "cooling": "水冷",
         "displacement_cc": 748,
@@ -65,35 +61,34 @@
         "valves_per_cylinder": 4,
         "bore_mm": 70.0,
         "stroke_mm": 48.6,
-        "bore_stroke_ratio": 1.44,
         "compression_ratio": 11.0,
         "ps": 77,
-        "kw": 56,
         "ps_rpm": 9500,
+        "kw": 56,
         "torque_kgf_m": 7.1,
         "torque_nm": 69,
         "torque_rpm": 7000,
-        "fuel_efficiency": {
-          "constant_60kmh": 32.2,
-          "wmtc": null
-        },
+        "fuel_efficiency": { "constant_60kmh": 32.2 },
         "lubrication": "ウェットサンプ式",
         "start_system": ["セルフスターター式"]
       },
       "maintenance_and_fuel": {
-        "fuel_supply": "キャブレター",
+        "fuel_supply_type": "キャブレター",
         "fuel_device_model": "VDHO",
-        "tank_capacity_l": 18,
+        "fuel_tank_capacity_l": 18,
         "cruising_range_km": 579.6,
-        "ignition": "C.D.I.式",
-        "spark_plug": "C9EH-9",
+        "ignition_type": "C.D.I.式",
+        "spark_plug_model": "C9EH-9",
         "spark_plug_qty": 4,
-        "battery": "YTX9-BS",
-        "oil_capacity_total_l": 3.8
+        "battery_model": "YTX9-BS",
+        "engine_oil": { "total_l": 3.8 }
       },
       "drivetrain": {
-        "clutch_type": ["湿式", "多板"],
-        "transmission": ["リターン式", 6],
+        "clutch_operation": "湿式",
+        "clutch_structure": "多板",
+        "transmission_type": "リターン式",
+        "transmission_gear_count": 6,
+        "final_drive": "チェーン",
         "primary_reduction": 1.939,
         "secondary_reduction": 2.5,
         "gear_ratios": {
@@ -104,22 +99,18 @@
           "5": 1.291,
           "6": 1.192
         },
-        "final_drive": "チェーン",
-        "sprocket_f": 16,
-        "sprocket_r": 40,
-        "chain_size": "525",
-        "chain_links": 106
+        "sprocket": { "front": 16, "rear": 40 },
+        "chain": { "size": "525", "links": 106 }
       },
-      "chassis_and_brakes": {
-        "frame": "アルミツインチューブ",
-        "caster_deg": 24.83,
-        "trail_mm": 91,
-        "suspension_f": "テレスコピックフォーク",
-        "suspension_f_type": "正立フォーク",
-        "suspension_r": "スイングアーム式（プロアーム）",
-        "suspension_r_shocks": 1,
-        "brake_f": "油圧式ダブルディスク",
-        "brake_r": "油圧式ディスク"
+      "chassis_and_suspension": {
+        "frame_type": "ダイヤモンド（アルミツインチューブ）",
+        "suspension_front_type": "正立フォーク",
+        "suspension_rear_type": "スイングアーム式",
+        "suspension_rear_shock_qty": 1
+      },
+      "brakes": {
+        "front_type": "油圧式ダブルディスク",
+        "rear_type": "油圧式ディスク"
       },
       "tires": {
         "front": {
@@ -135,14 +126,18 @@
           "load_index": 73,
           "speed_symbol": "H",
           "type": "チューブレス"
-        }
+        },
+        "air_pressure": { "front": null, "rear": null }
       },
-      "electrical_equipment": {
-        "headlight_type": null,
-        "speedometer_type": "アナログ",
+      "lighting": {
+        "headlight_type": "ハロゲン",
+        "headlight_std": "12V 60/55W"
+      },
+      "meter": {
+        "display_type": "アナログ",
         "tachometer": true
       },
-      "urls": []
+      "equipment": {}
     }
   ]
 }
