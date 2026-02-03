@@ -5,7 +5,7 @@
   "displacement_class": 750,
   "slug": "yamaha-fzr750r",
   "assets_dir": "/assets/images/yamaha/fzr750r/",
-  "thumbnail": "3FV-silky-white.png",
+  "thumbnail": "3fv-silky-white.png",
   "status": "published",
   "metadata": {
     "created_at": {
@@ -17,20 +17,20 @@
       "label": "2026-02-04 02:50"
     }
   },
-  "profile": "YZF750の技術を生かした、国内で500台限定発売されたFZRシリーズの頂点モデル。",
+  "profile": "YZF750の技術を生かした、国内で500台限定発売されたFZRシリーズの頂点モデル。FZR750Rというモデル名よりも、OW01（オーダブリューゼロイチ）という通称ほうが記憶に残るマシンと言われている。",
   "price_range": {
     "new": { "min": 2000000, "max": 2000000 },
     "used": { "min": null, "max": null }
   },
   "timeline": [
     {
-      "id": "yamaha-fzr750r-ow01",
+      "id": "yamaha-fzr750r-3fv",
       "is_current": false,
       "model_code": "3FV",
       "emission_code": null,
       "release_years": [1989],
       "release_month": 4,
-      "slug": "fzr750r-ow01",
+      "slug": "fzr750r-3fv",
       "profile": "国内500台限定販売。徹底したマスの集中化と高剛性・軽量化を追求したアルミデルタボックスフレームに、ショートストローク化された5バルブ水冷並列4気筒エンジンを搭載。",
       "basic_info": {
         "grade_name": "FZR750R",
