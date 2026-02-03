@@ -1,0 +1,144 @@
+{
+  "$schema": "../schema.json",
+  "maker": "Yamaha",
+  "model": "FZR750R",
+  "displacement_class": 750,
+  "slug": "yamaha-fzr750r",
+  "assets_dir": "/assets/images/yamaha/fzr750r/",
+  "thumbnail": "3FV-silky-white.png",
+  "status": "published",
+  "metadata": {
+    "created_at": {
+      "iso": "2026-02-04T02:50:00Z",
+      "label": "2026-02-04 02:50"
+    },
+    "updated_at": {
+      "iso": "2026-02-04T02:50:00Z",
+      "label": "2026-02-04 02:50"
+    }
+  },
+  "profile": "YZF750の技術を生かした、国内で500台限定発売されたFZRシリーズの頂点モデル。",
+  "price_range": {
+    "new": { "min": 2000000, "max": 2000000 },
+    "used": { "min": null, "max": null }
+  },
+  "timeline": [
+    {
+      "id": "yamaha-fzr750r-ow01",
+      "is_current": false,
+      "model_code": "3FV",
+      "emission_code": null,
+      "release_years": [1989],
+      "release_month": 4,
+      "slug": "fzr750r-ow01",
+      "profile": "国内500台限定販売。徹底したマスの集中化と高剛性・軽量化を追求したアルミデルタボックスフレームに、ショートストローク化された5バルブ水冷並列4気筒エンジンを搭載。",
+      "basic_info": {
+        "grade_name": "FZR750R",
+        "model_change_type": "新登場",
+        "ride_capacity": 2,
+        "min_turning_radius_m": 3.7,
+        "categories": ["レーサーレプリカ"]
+      },
+      "dimensions": {
+        "length_mm": 2100,
+        "width_mm": 705,
+        "height_mm": 1160,
+        "wheelbase_mm": 1455,
+        "ground_clearance_mm": 120,
+        "seat_height_mm": 780,
+        "curb_weight_kg": 210,
+        "dry_weight_kg": 187,
+        "caster_angle": "24.50",
+        "trail_mm": 100
+      },
+      "engine": {
+        "model": "3FV",
+        "type": "4ストローク",
+        "layout": "並列4気筒",
+        "cylinders": 4,
+        "cooling": "水冷",
+        "displacement_cc": 749,
+        "valve_system": "DOHC",
+        "valves_per_cylinder": 5,
+        "bore_mm": 72.0,
+        "stroke_mm": 46.0,
+        "compression_ratio": 11.2,
+        "ps": 77,
+        "ps_rpm": 9500,
+        "torque_kgf_m": 6.7,
+        "torque_nm": 65.7,
+        "torque_rpm": 7500,
+        "fuel_efficiency": { "constant_60kmh": 42.0 },
+        "lubrication": "ウェットサンプ式",
+        "start_system": ["セルフスターター式"]
+      },
+      "maintenance_and_fuel": {
+        "fuel_supply_type": "キャブレター",
+        "fuel_device_model": "BDST38",
+        "fuel_tank_capacity_l": 19,
+        "cruising_range_km": 798.0,
+        "ignition_type": "フルトランジスタ式",
+        "spark_plug_model": "DR9EA",
+        "battery_model": "YTX9-BS",
+        "battery_capacity": "12V-8Ah",
+        "engine_oil": { "total_l": 3.5 }
+      },
+      "drivetrain": {
+        "clutch_operation": "湿式",
+        "clutch_structure": "多板",
+        "transmission_type": "リターン式",
+        "transmission_gear_count": 6,
+        "transmission_operation": "フットシフト",
+        "final_drive": "チェーン",
+        "primary_reduction": 1.658,
+        "secondary_reduction": 2.529,
+        "gear_ratios": {
+          "1": 2.461,
+          "2": 1.941,
+          "3": 1.631,
+          "4": 1.434,
+          "5": 1.3,
+          "6": 1.19
+        },
+        "sprocket": { "front": 17, "rear": 42 },
+        "chain": { "size": "530", "links": 112 }
+      },
+      "chassis_and_suspension": {
+        "frame_type": "ダイヤモンド（アルミデルタボックス）",
+        "suspension_front_type": "テレスコピックフォーク",
+        "suspension_front_travel_mm": 130,
+        "suspension_rear_type": "スイングアーム式",
+        "suspension_rear_travel_mm": 150
+      },
+      "brakes": {
+        "front_type": "油圧式ダブルディスク",
+        "rear_type": "油圧式ディスク"
+      },
+      "tires": {
+        "front": {
+          "size": "120/70R17",
+          "structure": "ラジアル",
+          "load_index": 58,
+          "speed_symbol": "H",
+          "type": "チューブレス"
+        },
+        "rear": {
+          "size": "170/60R17",
+          "structure": "ラジアル",
+          "load_index": 71,
+          "speed_symbol": "H",
+          "type": "チューブレス"
+        },
+        "air_pressure": { "front": null, "rear": null }
+      },
+      "lighting": {
+        "headlight_std": "45W/45W",
+        "taillight_std": "21W/5W"
+      },
+      "meter": {
+        "tachometer": true
+      },
+      "equipment": {}
+    }
+  ]
+}
