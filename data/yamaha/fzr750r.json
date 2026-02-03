@@ -19,8 +19,8 @@
   },
   "profile": "YZF750の技術を生かした、国内で500台限定発売されたFZRシリーズの頂点モデル。FZR750Rというモデル名よりも、OW01（オーダブリューゼロイチ）という通称ほうが記憶に残るマシンと言われている。",
   "price_range": {
-    "new": { "min": 2000000, "max": 2000000 },
-    "used": { "min": null, "max": null }
+    "new": { "min": null, "max": null },
+    "used": { "min": null, "max": 12100000 }
   },
   "timeline": [
     {
