@@ -1,119 +1,681 @@
 {
-  "$schema": "http://json-schema.org/draft-07/schema#",
-  "title": "Motorcycle Master Data Schema",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raiton.dev/schemas/motor-archive.json",
+  "title": "Motor Archive Schema v8.1",
+  "description": "国内外の市販オートバイのスペックと詳細情報を保存するためのマスターデータ定義",
   "type": "object",
   "required": ["maker", "model", "displacement_class", "slug", "timeline"],
   "properties": {
-    "$schema": { "type": "string" },
     "maker": {
       "type": "string",
-      "enum": ["Honda", "Yamaha", "Suzuki", "Kawasaki"]
+      "enum": [
+        "Honda",
+        "Yamaha",
+        "Suzuki",
+        "Kawasaki",
+        "Harley-Davidson",
+        "Ducati",
+        "BMW",
+        "Triumph",
+        "KTM",
+        "Husqvarna"
+      ],
+      "description": "メーカー名"
     },
-    "model": { "type": "string" },
+    "model": { "type": "string", "description": "モデル名" },
     "displacement_class": {
       "type": "integer",
-      "enum": [50, 125, 250, 400, 750, 1000, 1100],
-      "description": "免許・税制区分（検索用）"
+      "enum": [0, 50, 125, 250, 400, 750, 1000, 1100, 1300, 1800],
+      "description": "排気量クラス区分 (0は電動バイクを示す)"
     },
-    "slug": { "type": "string", "pattern": "^[a-z0-9-]+$" },
-    "assets_dir": { "type": "string" },
-    "thumbnail": { "type": "string" },
-    "status": { "type": "string", "enum": ["published", "draft", "archived"] },
+    "slug": {
+      "type": "string",
+      "pattern": "^[a-z0-9-]+$",
+      "description": "URL用ID"
+    },
+    "assets_dir": {
+      "type": ["string", "null"],
+      "description": "画像パスの格納パス"
+    },
+    "thumbnail": {
+      "type": ["string", "null"],
+      "description": "代表画像のファイル名"
+    },
+    "status": {
+      "type": "string",
+      "enum": ["published", "draft", "archived"],
+      "default": "draft",
+      "description": "公開ステータス (published: 公開中, draft: 下書き, archived: アーカイブ済み)"
+    },
     "metadata": {
       "type": "object",
+      "description": "データファイルの作成・更新日時",
       "properties": {
-        "created_at": { "$ref": "#/definitions/date_info" },
-        "updated_at": { "$ref": "#/definitions/date_info" }
+        "created_at": { "$ref": "#/$defs/date_info" },
+        "updated_at": { "$ref": "#/$defs/date_info" }
       }
     },
-    "profile": { "type": "string" },
+    "profile": {
+      "type": ["string", "null"],
+      "description": "車両プロフィール"
+    },
     "price_range": {
+      "type": ["object", "null"],
+      "description": "価格帯",
+      "properties": {
+        "new": { "$ref": "#/$defs/price_min_max" },
+        "used": { "$ref": "#/$defs/price_min_max" }
+      }
+    },
+    "timeline": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/timeline_item" },
+      "description": "年式別詳細データ"
+    }
+  },
+  "$defs": {
+    "date_info": {
+      "type": "object",
+      "properties": {
+        "iso": { "type": "string", "format": "date-time" },
+        "label": { "type": "string", "description": "手書き日付ラベル" }
+      }
+    },
+    "price_min_max": {
       "type": "object",
       "properties": {
         "min": { "type": ["integer", "null"] },
         "max": { "type": ["integer", "null"] }
       }
     },
-    "timeline": {
-      "type": "array",
-      "items": {
-        "type": "object",
-        "required": ["id", "model_code", "engine"],
-        "properties": {
-          "id": { "type": "string" },
-          "is_current": { "type": "boolean" },
-          "model_code": { "type": "string" },
-          "emission_code": { "type": ["string", "null"] },
-          "release_years": { "type": "array", "items": { "type": "integer" } },
-          "slug": { "type": "string" },
-          "profile": { "type": "string" },
-          "basic_info": {
+    "timeline_item": {
+      "type": "object",
+      "required": ["id"],
+      "properties": {
+        "id": { "type": "string", "description": "SQL用の主キー" },
+        "is_current": {
+          "type": "boolean",
+          "default": false,
+          "description": "現行モデルフラグ"
+        },
+        "model_code": { "type": ["string", "null"], "description": "型式" },
+        "emission_code": {
+          "type": ["string", "null"],
+          "description": "規制記号"
+        },
+        "release_years": {
+          "type": "array",
+          "items": { "type": "integer" },
+          "description": "発売年"
+        },
+        "release_month": {
+          "type": ["integer", "null"],
+          "description": "発売月"
+        },
+        "market_spec": {
+          "type": ["string", "null"],
+          "description": "仕向け地"
+        },
+        "slug": { "type": ["string", "null"] },
+        "profile": { "type": ["string", "null"], "description": "年式解説" },
+        "basic_info": {
+          "type": ["object", "null"],
+          "description": "基本スペック",
+          "properties": {
+            "grade_name": {
+              "type": ["string", "null"],
+              "description": "グレード名"
+            },
+            "model_change_type": {
+              "type": ["string", "null"],
+              "description": "モデルチェンジ区分"
+            },
+            "ride_capacity": {
+              "type": ["integer", "null"],
+              "description": "乗車定員"
+            },
+            "min_turning_radius_m": {
+              "type": ["number", "null"],
+              "description": "最小回転半径"
+            },
+            "categories": {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "enum": [
+                  "ネイキッド",
+                  "ストリートファイター",
+                  "スーパースポーツ",
+                  "レーサーレプリカ",
+                  "ツアラー",
+                  "スポーツツアラー",
+                  "メガスポーツ",
+                  "アメリカン・クルーザー",
+                  "アドベンチャー",
+                  "オフロード",
+                  "モタード",
+                  "スクーター",
+                  "ミニバイク",
+                  "ストリート",
+                  "クラシック",
+                  "ネオクラシック",
+                  "ビジネス",
+                  "コンペティション",
+                  "トライク",
+                  "電動バイク"
+                ]
+              },
+              "description": "カテゴリ"
+            }
+          }
+        },
+        "colors": {
+          "type": ["array", "null"],
+          "description": "カラーバリエーション",
+          "items": {
             "type": "object",
+            "required": ["name"],
             "properties": {
-              "type_grade_name": { "type": "string" },
-              "model_change_type": { "type": "string" },
-              "ride_capacity": { "type": "integer" },
-              "categories": {
-                "type": "array",
-                "items": {
-                  "type": "string",
-                  "enum": [
-                    "ネイキッド",
-                    "スーパースポーツ",
-                    "レーサーレプリカ",
-                    "アメリカン",
-                    "ネオクラシック",
-                    "スクーター",
-                    "ミニバイク",
-                    "モタード",
-                    "アドベンチャー",
-                    "ツアラー",
-                    "オフロード",
-                    "スポーツツアラー",
-                    "ストリート",
-                    "ビジネス"
-                  ]
+              "name": { "type": "string", "description": "色名" },
+              "code": {
+                "type": ["string", "null"],
+                "description": "カラーコード"
+              },
+              "image": { "type": ["string", "null"], "description": "画像" }
+            }
+          }
+        },
+        "dimensions": {
+          "type": ["object", "null"],
+          "description": "サイズ・重量",
+          "properties": {
+            "length_mm": { "type": ["integer", "null"], "description": "全長" },
+            "width_mm": { "type": ["integer", "null"], "description": "全幅" },
+            "height_mm": { "type": ["integer", "null"], "description": "全高" },
+            "wheelbase_mm": {
+              "type": ["integer", "null"],
+              "description": "ホイールベース"
+            },
+            "ground_clearance_mm": {
+              "type": ["integer", "null"],
+              "description": "最低地上高"
+            },
+            "seat_height_mm": {
+              "type": ["integer", "null"],
+              "description": "シート高"
+            },
+            "curb_weight_kg": {
+              "type": ["integer", "null"],
+              "description": "装備重量"
+            },
+            "dry_weight_kg": {
+              "type": ["integer", "null"],
+              "description": "乾燥重量"
+            },
+            "caster_angle": {
+              "type": ["string", "number", "null"],
+              "description": "キャスター角"
+            },
+            "trail_mm": {
+              "type": ["number", "null"],
+              "description": "トレール量"
+            }
+          }
+        },
+        "engine": {
+          "type": ["object", "null"],
+          "description": "エンジン",
+          "properties": {
+            "model": {
+              "type": ["string", "null"],
+              "description": "原動機型式"
+            },
+            "type": {
+              "type": ["string", "null"],
+              "enum": ["2ストローク", "4ストローク", "電動", null],
+              "description": "燃焼方式・原動機種類"
+            },
+            "induction_type": {
+              "type": ["string", "null"],
+              "enum": [
+                "ターボ",
+                "スーパーチャージャー",
+                "ラムエアシステム",
+                null
+              ],
+              "description": "過給方式"
+            },
+            "cooling": {
+              "type": ["string", "null"],
+              "enum": ["水冷", "空冷", "油冷", null],
+              "description": "冷却方式"
+            },
+            "layout": {
+              "type": ["string", "null"],
+              "description": "シリンダ配列"
+            },
+            "cylinders": {
+              "type": ["integer", "null"],
+              "description": "気筒数"
+            },
+            "valve_system": {
+              "type": ["string", "null"],
+              "enum": ["DOHC", "SOHC", "OHV", "OHC", null],
+              "description": "カム・バルブ駆動方式"
+            },
+            "valves_per_cylinder": {
+              "type": ["integer", "null"],
+              "description": "気筒あたりバルブ数"
+            },
+            "displacement_cc": {
+              "type": ["integer", "null"],
+              "description": "排気量"
+            },
+            "rated_output_kw": {
+              "type": ["number", "null"],
+              "description": "電気モーター定格出力(EV)"
+            },
+            "bore_mm": {
+              "type": ["number", "null"],
+              "description": "シリンダーボアの内径"
+            },
+            "stroke_mm": {
+              "type": ["number", "null"],
+              "description": "ピストンストロークの行程"
+            },
+            "compression_ratio": {
+              "type": ["number", "null"],
+              "description": "圧縮比"
+            },
+            "lubrication": {
+              "type": ["string", "null"],
+              "description": "潤滑方式"
+            },
+            "ps": {
+              "type": ["integer", "null"],
+              "description": "最高出力(PS)"
+            },
+            "ps_ram_air": {
+              "type": ["integer", "null"],
+              "description": "ラムエア加算後最高出力(PS)"
+            },
+            "ps_rpm": {
+              "type": ["integer", "null"],
+              "description": "最高出力発生回転数"
+            },
+            "kw": {
+              "type": ["integer", "null"],
+              "description": "最高出力(kW)"
+            },
+            "kw_ram_air": {
+              "type": ["integer", "null"],
+              "description": "ラムエア加算後最高出力(kW)"
+            },
+            "torque_nm": {
+              "type": ["number", "null"],
+              "description": "最大トルク(Nm)"
+            },
+            "torque_kgf_m": {
+              "type": ["number", "null"],
+              "description": "最大トルク(kgf·m)"
+            },
+            "torque_rpm": {
+              "type": ["integer", "null"],
+              "description": "最大トルク発生回転数"
+            },
+            "start_system": {
+              "type": ["array", "null"],
+              "items": {
+                "type": "string",
+                "enum": ["セルフスターター式", "キックスターター式"]
+              },
+              "description": "エンジン始動方法"
+            },
+            "fuel_efficiency": {
+              "type": ["object", "null"],
+              "description": "燃費性能",
+              "properties": {
+                "wmtc": {
+                  "type": ["number", "null"],
+                  "description": "WMTCモード"
+                },
+                "constant_60kmh": {
+                  "type": ["number", "null"],
+                  "description": "定常燃費 60km/h"
                 }
               }
             }
-          },
-          "dimensions": { "type": "object" },
-          "engine": {
-            "type": "object",
-            "required": ["displacement_cc", "bore_mm", "stroke_mm"],
-            "properties": {
-              "model": { "type": "string" },
-              "displacement_cc": { "type": "integer" },
-              "bore_mm": { "type": "number" },
-              "stroke_mm": { "type": "number" },
-              "ps": { "type": "integer" },
-              "kw": { "type": "integer" },
-              "bore_stroke_ratio": { "type": "number" }
+          }
+        },
+        "maintenance_and_fuel": {
+          "type": ["object", "null"],
+          "description": "燃料・油脂・点火",
+          "properties": {
+            "fuel_supply_type": {
+              "type": ["string", "null"],
+              "enum": ["キャブレター", "フューエルインジェクション", null],
+              "description": "燃料供給方式"
+            },
+            "fuel_device_model": {
+              "type": ["string", "null"],
+              "description": "燃料供給装置型式"
+            },
+            "fuel_tank_capacity_l": {
+              "type": ["number", "null"],
+              "description": "燃料タンク容量(L)"
+            },
+            "fuel_type": {
+              "type": ["string", "null"],
+              "enum": ["レギュラーガソリン", "ハイオクガソリン", "軽油", null],
+              "description": "推奨燃料種類"
+            },
+            "cruising_range_km": {
+              "type": ["number", "null"],
+              "description": "航続可能距離"
+            },
+            "ignition_type": {
+              "type": ["string", "null"],
+              "description": "点火方式"
+            },
+            "battery_model": {
+              "type": ["string", "null"],
+              "description": "バッテリー型式"
+            },
+            "battery_capacity": {
+              "type": ["string", "null"],
+              "description": "バッテリー容量"
+            },
+            "spark_plug_model": {
+              "type": ["string", "null"],
+              "description": "スパークプラグ型式"
+            },
+            "spark_plug_qty": {
+              "type": ["integer", "null"],
+              "description": "スパークプラグ数"
+            },
+            "engine_oil": {
+              "type": ["object", "null"],
+              "description": "エンジンオイル",
+              "properties": {
+                "total_l": {
+                  "type": ["number", "null"],
+                  "description": "エンジンオイル総容量"
+                },
+                "exchange_l": {
+                  "type": ["number", "null"],
+                  "description": "エンジンオイル交換時容量"
+                },
+                "filter_exchange_l": {
+                  "type": ["number", "null"],
+                  "description": "エンジンオイルフィルター交換時容量"
+                },
+                "viscosity": {
+                  "type": ["string", "null"],
+                  "description": "推薦エンジンオイル粘度"
+                }
+              }
             }
-          },
-          "maintenance_and_fuel": { "type": "object" },
-          "drivetrain": { "type": "object" },
-          "chassis_and_brakes": { "type": "object" },
-          "tires": { "type": "object" },
-          "electrical_equipment": { "type": "object" },
-          "urls": { "type": "array", "items": { "type": "string" } }
+          }
+        },
+        "drivetrain": {
+          "type": ["object", "null"],
+          "description": "駆動系",
+          "properties": {
+            "clutch_operation": {
+              "type": ["string", "null"],
+              "enum": ["湿式", "乾式", null],
+              "description": "クラッチ作動環境"
+            },
+            "clutch_structure": {
+              "type": ["string", "null"],
+              "enum": ["多板", "単板", "遠心", "自動遠心", null],
+              "description": "クラッチ構造"
+            },
+            "transmission_type": {
+              "type": ["string", "null"],
+              "enum": ["リターン式", "ロータリー式", "無段変速式", null],
+              "description": "変速方式"
+            },
+            "transmission_gear_count": {
+              "type": ["integer", "null"],
+              "description": "変速段数"
+            },
+            "transmission_operation": {
+              "type": ["string", "null"],
+              "description": "変速機操作方式"
+            },
+            "final_drive": {
+              "type": ["string", "null"],
+              "enum": ["チェーン", "シャフト", "ベルト", null],
+              "description": "動力伝達方式"
+            },
+            "primary_reduction": {
+              "type": ["number", "null"],
+              "description": "一次減速比"
+            },
+            "secondary_reduction": {
+              "type": ["number", "null"],
+              "description": "二次減速比"
+            },
+            "gear_ratios": {
+              "type": ["object", "null"],
+              "patternProperties": { "^[a-zA-Z0-9]+$": { "type": "number" } },
+              "description": "ギア比"
+            },
+            "sprocket": {
+              "type": ["object", "null"],
+              "properties": {
+                "front": {
+                  "type": ["integer", "null"],
+                  "description": "フロントスプロケット歯数"
+                },
+                "rear": {
+                  "type": ["integer", "null"],
+                  "description": "リアスプロケット歯数"
+                }
+              }
+            },
+            "chain": {
+              "type": ["object", "null"],
+              "description": "チェーン",
+              "properties": {
+                "size": {
+                  "type": ["string", "null"],
+                  "description": "チェーンサイズ"
+                },
+                "links": {
+                  "type": ["integer", "null"],
+                  "description": "リンク数"
+                }
+              }
+            }
+          }
+        },
+        "chassis_and_suspension": {
+          "type": ["object", "null"],
+          "description": "車体・サスペンション",
+          "properties": {
+            "frame_type": {
+              "type": ["string", "null"],
+              "description": "フレーム形式"
+            },
+            "suspension_front_type": {
+              "type": ["string", "null"],
+              "enum": [
+                "テレスコピックフォーク",
+                "倒立フォーク",
+                "正立フォーク",
+                null
+              ],
+              "description": "フロント懸架方式"
+            },
+            "suspension_front_travel_mm": {
+              "type": ["integer", "null"],
+              "description": "フロントサスペンションストローク量"
+            },
+            "suspension_rear_type": {
+              "type": ["string", "null"],
+              "enum": [
+                "スイングアーム式",
+                "ユニットスイング式",
+                "パラレバー",
+                "リジッド",
+                null
+              ],
+              "description": "リア懸架方式"
+            },
+            "suspension_rear_shock_qty": {
+              "type": ["integer", "null"],
+              "description": "ショックアブソーバ本数"
+            },
+            "suspension_rear_travel_mm": {
+              "type": ["integer", "null"],
+              "description": "リアサスペンションストローク量"
+            }
+          }
+        },
+        "brakes": {
+          "type": ["object", "null"],
+          "description": "ブレーキ",
+          "properties": {
+            "front_type": {
+              "type": ["string", "null"],
+              "enum": [
+                "油圧式ディスク",
+                "油圧式ダブルディスク",
+                "機械式ディスク",
+                "機械式リーディングトレーリング",
+                null
+              ],
+              "description": "フロントブレーキ形式"
+            },
+            "rear_type": {
+              "type": ["string", "null"],
+              "enum": [
+                "油圧式ディスク",
+                "機械式ディスク",
+                "機械式リーディングトレーリング",
+                null
+              ],
+              "description": "リアブレーキ形式"
+            },
+            "oil_standard": {
+              "type": ["string", "null"],
+              "description": "推薦ブレーキオイル規格"
+            }
+          }
+        },
+        "tires": {
+          "type": ["object", "null"],
+          "description": "タイヤ・空気圧",
+          "properties": {
+            "front": { "$ref": "#/$defs/tire_spec" },
+            "rear": { "$ref": "#/$defs/tire_spec" },
+            "air_pressure": {
+              "type": ["object", "null"],
+              "description": "標準空気圧 (乗車定員時)",
+              "properties": {
+                "front": {
+                  "type": ["number", "null"],
+                  "description": "フロントタイヤの空気圧"
+                },
+                "rear": {
+                  "type": ["number", "null"],
+                  "description": "リアタイヤの空気圧"
+                }
+              }
+            }
+          }
+        },
+        "lighting": {
+          "type": ["object", "null"],
+          "description": "灯火類",
+          "properties": {
+            "headlight_type": {
+              "type": ["string", "null"],
+              "enum": ["LED", "ハロゲン", "バルブ", "シールドビーム", null],
+              "description": "ヘッドライト形式"
+            },
+            "headlight_std": {
+              "type": ["string", "null"],
+              "description": "ヘッドライト定格"
+            },
+            "taillight_type": {
+              "type": ["string", "null"],
+              "enum": ["LED", "バルブ", null],
+              "description": "テールライト形式"
+            },
+            "taillight_std": {
+              "type": ["string", "null"],
+              "description": "テールライト定格"
+            }
+          }
+        },
+        "meter": {
+          "type": ["object", "null"],
+          "description": "メーター機能 (任意のキーを追加してtrue設定)",
+          "additionalProperties": { "type": "boolean" },
+          "properties": {
+            "display_type": {
+              "type": ["string", "null"],
+              "enum": ["デジタル", "アナログ", "コンビネーション", null],
+              "description": "スピードメーター表示形式"
+            }
+          }
+        },
+        "equipment": {
+          "type": ["object", "null"],
+          "description": "車両装備・機能 (任意のキーを追加してtrue設定)",
+          "additionalProperties": { "type": "boolean" }
+        },
+        "urls": {
+          "type": ["array", "null"],
+          "items": { "type": "string" },
+          "description": "情報参考URL"
         }
       }
-    }
-  },
-  "definitions": {
-    "date_info": {
-      "type": "object",
-      "properties": {
-        "iso": { "type": "string", "format": "date-time" },
-        "label": { "type": "string" }
-      }
     },
-    "price_range": {
-      "type": "object",
+    "tire_spec": {
+      "type": ["object", "null"],
       "properties": {
-        "min": { "type": "integer" },
-        "max": { "type": "integer" }
+        "size": { "type": ["string", "null"] },
+        "structure": {
+          "type": ["string", "null"],
+          "enum": ["ラジアル", "バイアス", null],
+          "description": "タイヤ構造"
+        },
+        "load_index": {
+          "type": ["integer", "null"],
+          "description": "タイヤ荷重指数"
+        },
+        "speed_symbol": {
+          "type": ["string", "null"],
+          "enum": [
+            "J",
+            "K",
+            "L",
+            "M",
+            "P",
+            "Q",
+            "R",
+            "S",
+            "T",
+            "U",
+            "H",
+            "V",
+            "W",
+            "(W)",
+            "Y",
+            "Z",
+            null
+          ],
+          "description": "タイヤ速度記号"
+        },
+        "type": {
+          "type": ["string", "null"],
+          "enum": ["チューブレス", "チューブ", null],
+          "description": "タイヤタイプ"
+        }
       }
     }
   }
