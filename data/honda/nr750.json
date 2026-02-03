@@ -1,0 +1,138 @@
+{
+  "$schema": "../schema.json",
+  "maker": "Honda",
+  "model": "NR",
+  "displacement_class": 750,
+  "slug": "honda-nr",
+  "assets_dir": "/assets/images/honda/nr750/",
+  "thumbnail": "rc40-red.png",
+  "status": "published",
+  "metadata": {
+    "created_at": {
+      "iso": "2026-02-04T03:15:00Z",
+      "label": "2026-02-04 03:15"
+    },
+    "updated_at": {
+      "iso": "2026-02-04T03:15:00Z",
+      "label": "2026-02-04 03:15"
+    }
+  },
+  "profile": "1992年に発売されたNRは、ロードレース世界選手権（WGP）参戦マシンNR500の技術を継承したプレミアムモデル。市販車で世界唯一となる楕円ピストンエンジンを搭載し、1気筒あたり8バルブ、2本のチタンコンロッド、2本の点火プラグを持つ。カーボン製フルカウルやプロアームなど、当時のホンダが持つ技術の粋を結集し、限定300台、520万円という破格の条件で市販された伝説の一台である。",
+  "price_range": {
+    "new": { "min": 5200000, "max": 5200000 },
+    "used": { "min": null, "max": null }
+  },
+  "timeline": [
+    {
+      "id": "honda-nr-rc40",
+      "is_current": false,
+      "model_code": "RC40",
+      "emission_code": null,
+      "release_years": [1992],
+      "release_month": 5,
+      "slug": "nr-rc40",
+      "profile": "1992年に登場した唯一の市販モデル。ピストン1つが2つの円を繋いだような楕円形をしており、実質的にV8エンジンの効率をV4のパッケージで実現することを目指した究極の4ストロークマシン。",
+      "basic_info": {
+        "grade_name": "NR",
+        "model_change_type": "新登場",
+        "ride_capacity": 1,
+        "min_turning_radius_m": 3.1,
+        "categories": ["レーサーレプリカ", "スポーツツアラー"]
+      },
+      "dimensions": {
+        "length_mm": 2085,
+        "width_mm": 890,
+        "height_mm": 1090,
+        "wheelbase_mm": 1435,
+        "ground_clearance_mm": 130,
+        "seat_height_mm": 780,
+        "curb_weight_kg": 244,
+        "dry_weight_kg": 223,
+        "caster_angle": "24°30′",
+        "trail_mm": 88
+      },
+      "engine": {
+        "model": "RC40E",
+        "type": "4ストローク",
+        "layout": "V型4気筒",
+        "cylinders": 4,
+        "cooling": "水冷",
+        "displacement_cc": 747,
+        "valve_system": "DOHC",
+        "valves_per_cylinder": 8,
+        "bore_mm": 101.2,
+        "stroke_mm": 42.0,
+        "compression_ratio": 11.7,
+        "ps": 77,
+        "ps_rpm": 11500,
+        "torque_kgf_m": 5.4,
+        "torque_rpm": 9000,
+        "fuel_efficiency": { "constant_60kmh": 20.8 },
+        "lubrication": "ウェットサンプ式",
+        "start_system": ["セルフスターター式"]
+      },
+      "maintenance_and_fuel": {
+        "fuel_supply_type": "フューエルインジェクション",
+        "fuel_device_model": "PGM-FI",
+        "fuel_tank_capacity_l": 17,
+        "cruising_range_km": 353.6,
+        "ignition_type": "フルトランジスタ式",
+        "spark_plug_model": "ER9EH",
+        "spark_plug_qty": 8,
+        "battery_model": "YTX12-BS",
+        "engine_oil": { "total_l": null }
+      },
+      "drivetrain": {
+        "clutch_operation": "湿式",
+        "clutch_structure": "多板",
+        "transmission_type": "リターン式",
+        "transmission_gear_count": 6,
+        "final_drive": "チェーン",
+        "primary_reduction": 1.937,
+        "secondary_reduction": 2.5,
+        "gear_ratios": {
+          "1": 2.666,
+          "2": 2.125,
+          "3": 1.777,
+          "4": 1.5,
+          "5": 1.38,
+          "6": 1.24
+        },
+        "sprocket": { "front": 16, "rear": 40 },
+        "chain": { "size": "525", "links": 108 }
+      },
+      "chassis_and_suspension": {
+        "frame_type": "バックボーン",
+        "suspension_front_type": "倒立フォーク",
+        "suspension_rear_type": "スイングアーム式",
+        "suspension_rear_shock_qty": 1
+      },
+      "brakes": {
+        "front_type": "油圧式ダブルディスク",
+        "rear_type": "油圧式ディスク"
+      },
+      "tires": {
+        "front": {
+          "size": "130/70ZR16",
+          "structure": "ラジアル",
+          "type": "チューブレス"
+        },
+        "rear": {
+          "size": "180/55ZR17",
+          "structure": "ラジアル",
+          "type": "チューブレス"
+        },
+        "air_pressure": { "front": null, "rear": null }
+      },
+      "lighting": {
+        "headlight_type": null,
+        "headlight_std": null
+      },
+      "meter": {
+        "display_type": "コンビネーション",
+        "tachometer": true
+      },
+      "equipment": {}
+    }
+  ]
+}
