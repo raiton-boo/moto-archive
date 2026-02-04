@@ -4,8 +4,8 @@
   "model": "VFR750R",
   "displacement_class": 750,
   "slug": "honda-vfr750r",
-  "assets_dir": "/assets/images/honda/vfr750r-rc30/",
-  "thumbnail": "vfr750r-rc30-standard.png",
+  "assets_dir": "/assets/images/honda/vfr750r/",
+  "thumbnail": "rc30-tricolor.png",
   "status": "published",
   "metadata": {
     "created_at": {
