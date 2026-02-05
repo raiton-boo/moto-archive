@@ -1,0 +1,142 @@
+{
+  "$schema": "../schema.json",
+  "maker": "Kawasaki",
+  "model": "KR250",
+  "displacement_class": 250,
+  "slug": "kawasaki-kr250",
+  "assets_dir": "/assets/images/kawasaki/kr250/",
+  "thumbnail": "kr250a-green.png",
+  "status": "published",
+  "metadata": {
+    "created_at": {
+      "iso": "2026-02-06T01:20:00Z",
+      "label": "2026-02-06 01:20"
+    },
+    "updated_at": {
+      "iso": "2026-02-06T01:20:00Z",
+      "label": "2026-02-06 01:20"
+    }
+  },
+  "profile": "1984年に登場したカワサキ初の2ストローク・レーサーレプリカ。WGP参戦マシンで採用されていた「タンデムツイン（直列縦置2気筒）」レイアウトを市販車として再現。吸気形式にロータリーディスクバルブを採用するなど、他メーカーのレプリカとは一線を画す独創的なメカニズムが特徴である。",
+  "price_range": {
+    "new": { "min": null, "max": null },
+    "used": { "min": 899900, "max": 1299900 }
+  },
+  "timeline": [
+    {
+      "id": "kawasaki-kr250-kr250a",
+      "is_current": false,
+      "model_code": "KR250A",
+      "emission_code": null,
+      "release_years": [1984],
+      "release_month": 4,
+      "market_spec": "国内向けモデル",
+      "slug": "kr250-kr250a",
+      "profile": "1984年に発売された初期型モデル。水冷2ストローク・タンデムツインエンジンは最高出力45PSを発揮。独特の排気音と加速特性を持つ。",
+      "basic_info": {
+        "grade_name": "KR250",
+        "model_change_type": "新登場",
+        "ride_capacity": 2,
+        "min_turning_radius_m": null,
+        "categories": ["レーサーレプリカ"]
+      },
+      "dimensions": {
+        "length_mm": 2035,
+        "width_mm": 685,
+        "height_mm": 1185,
+        "wheelbase_mm": 1360,
+        "ground_clearance_mm": 130,
+        "seat_height_mm": 770,
+        "curb_weight_kg": 157,
+        "dry_weight_kg": 133,
+        "caster_angle": "27°00′",
+        "trail_mm": 84
+      },
+      "engine": {
+        "model": "KR250AE",
+        "type": "2ストローク",
+        "layout": "U型（タンデム）",
+        "cylinders": 2,
+        "cooling": "水冷",
+        "displacement_cc": 249,
+        "valve_system": null,
+        "valves_per_cylinder": null,
+        "bore_mm": 56.0,
+        "stroke_mm": 50.6,
+        "compression_ratio": 7.0,
+        "ps": 45,
+        "ps_rpm": 10000,
+        "torque_kgf_m": 3.7,
+        "torque_rpm": 8000,
+        "start_system": ["キックスターター式"],
+        "fuel_efficiency": {
+          "constant_60kmh": null
+        }
+      },
+      "maintenance_and_fuel": {
+        "fuel_supply_type": "キャブレター",
+        "fuel_tank_capacity_l": 18,
+        "ignition_type": "C.D.I.式",
+        "spark_plug_model": "B9ES",
+        "spark_plug_qty": 2,
+        "engine_oil": {
+          "total_l": 1.5
+        }
+      },
+      "drivetrain": {
+        "clutch_operation": "湿式",
+        "clutch_structure": "多板",
+        "transmission_type": "リターン式",
+        "transmission_gear_count": 6,
+        "transmission_operation": "フットシフト",
+        "final_drive": "チェーン",
+        "primary_reduction": 2.791,
+        "secondary_reduction": 2.714,
+        "gear_ratios": {
+          "1": 2.642,
+          "2": 1.777,
+          "3": 1.318,
+          "4": 1.083,
+          "5": 0.961,
+          "6": 0.888
+        },
+        "sprocket": { "front": 14, "rear": 38 },
+        "chain": { "size": "520", "links": 106 }
+      },
+      "chassis_and_suspension": {
+        "frame_type": "ダブルクレードル",
+        "suspension_front_type": "正立フォーク",
+        "suspension_rear_type": "スイングアーム式",
+        "suspension_rear_shock_qty": 1
+      },
+      "brakes": {
+        "front_type": "油圧式ダブルディスク",
+        "rear_type": "油圧式ディスク"
+      },
+      "tires": {
+        "front": {
+          "size": "100/90-16",
+          "structure": "バイアス",
+          "load_index": 54,
+          "speed_symbol": "H",
+          "type": null
+        },
+        "rear": {
+          "size": "110/80-18",
+          "structure": "バイアス",
+          "load_index": 58,
+          "speed_symbol": "H",
+          "type": null
+        },
+        "air_pressure": {
+          "front": 2.0,
+          "rear": 2.25
+        }
+      },
+      "lighting": {
+        "headlight_std": "60W/55W",
+        "taillight_std": "27W/8W"
+      }
+    }
+  ]
+}
