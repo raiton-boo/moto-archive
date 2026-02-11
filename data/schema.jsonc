@@ -348,19 +348,7 @@
           "properties": {
             "frame_type": {
               "description": "フレーム形式",
-              "type": ["string", "null"],
-              "enum": [
-                "ダイヤモンドフレーム",
-                "ツインチューブフレーム",
-                "トラスフレーム",
-                "モノコックフレーム",
-                "バックボーン",
-                "パイプフレーム",
-                "アルミフレーム",
-                "アルミツインチューブ",
-                "鋼管トラス構造フレーム",
-                null
-              ]
+              "type": ["string", "null"]
             },
             "suspension_front_type": {
               "description": "フロント懸架方式",
