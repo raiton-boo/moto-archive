@@ -1,23 +1,15 @@
 {
-  "$schema": "../schema.json",
+  "$schema": "../schema.jsonc",
   "maker": "Yamaha",
   "model": "FZR750R",
   "displacement_class": 750,
   "slug": "yamaha-fzr750r",
-  "assets_dir": "/assets/images/yamaha/fzr750r/",
-  "thumbnail": "3fv-silky-white.png",
   "status": "published",
   "metadata": {
-    "created_at": {
-      "iso": "2026-02-04T02:50:00Z",
-      "label": "2026-02-04 02:50"
-    },
-    "updated_at": {
-      "iso": "2026-02-04T02:50:00Z",
-      "label": "2026-02-04 02:50"
-    }
+    "created_at": { "iso": "2026-02-04T02:50:00Z", "label": "2026-02-05 03:53" },
+    "updated_at": { "iso": "2026-02-04T02:50:00Z", "label": "2026-02-12 01:15" }
   },
-  "profile": "YZF750の技術を生かした、国内で500台限定発売されたFZRシリーズの頂点モデル。FZR750Rというモデル名よりも、OW01（オーダブリューゼロイチ）という通称ほうが記憶に残るマシンと言われている。",
+  "overview": "YZF750の技術を生かした、国内で500台限定発売されたFZRシリーズの頂点モデル。FZR750Rというモデル名よりも、OW01（オーダブリューゼロイチ）という通称ほうが記憶に残るマシンと言われている。",
   "price_range": {
     "new": { "min": null, "max": null },
     "used": { "min": null, "max": 12100000 }
@@ -25,16 +17,27 @@
   "timeline": [
     {
       "id": "yamaha-fzr750r-3fv",
-      "is_current": false,
-      "model_code": "3FV",
-      "emission_code": null,
-      "release_years": [1989],
-      "release_month": 4,
       "slug": "fzr750r-3fv",
+      "model_code": "3FV",
+      "is_current": false,
+      "references": [
+        {
+          "title": "バイクブロス",
+          "urls": ["https://www.bikebros.co.jp/catalog/2/27_11/"],
+          "last_verified_at": "2026-02-12"
+        }
+      ],
+      "release": [
+        {
+          "year": 1989,
+          "month": 4,
+          "model_change_type": "新登場"
+        }
+      ],
+      "emission_code": null,
       "profile": "国内500台限定販売。徹底したマスの集中化と高剛性・軽量化を追求したアルミデルタボックスフレームに、ショートストローク化された5バルブ水冷並列4気筒エンジンを搭載。",
       "basic_info": {
         "grade_name": "FZR750R",
-        "model_change_type": "新登場",
         "ride_capacity": 2,
         "min_turning_radius_m": 3.7,
         "categories": ["レーサーレプリカ"]
@@ -138,7 +141,7 @@
       "meter": {
         "tachometer": true
       },
-      "equipment": {}
+      "equipment": null
     }
   ]
 }

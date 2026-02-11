@@ -1,23 +1,15 @@
 {
-  "$schema": "../schema.json",
+  "$schema": "../schema.jsonc",
   "maker": "Honda",
   "model": "VFR750R",
   "displacement_class": 750,
   "slug": "honda-vfr750r",
-  "assets_dir": "/assets/images/honda/vfr750r/",
-  "thumbnail": "rc30-tricolor.png",
   "status": "published",
   "metadata": {
-    "created_at": {
-      "iso": "2026-02-01T00:45:00Z",
-      "label": "2026-02-01 00:45"
-    },
-    "updated_at": {
-      "iso": "2026-02-04T02:15:00Z",
-      "label": "2026-02-04 02:15"
-    }
+    "created_at": { "iso": "2026-02-01T00:45:00Z", "label": "2026-02-06 01:37" },
+    "updated_at": { "iso": "2026-02-04T02:15:00Z", "label": "2026-02-12 01:11" }
   },
-  "profile": "1987年に発売されたVFR750Rは、世界耐久ロードレースで2年連続優勝を果たしたRVF750のレーサーレプリカモデル。チタン合金製コンロッドやクロモリ浸炭鋼カムシャフト、アルミ製燃料タンク、FRP製カウルなど、当時の市販車の常識を超えたレーススペックパーツを惜しみなく投入した伝説のホモロゲーションモデルである。",
+  "overview": "1987年に発売されたVFR750Rは、世界耐久ロードレースで2年連続優勝を果たしたRVF750のレーサーレプリカモデル。チタン合金製コンロッドやクロモリ浸炭鋼カムシャフト、アルミ製燃料タンク、FRP製カウルなど、当時の市販車の常識を超えたレーススペックパーツを惜しみなく投入した伝説のホモロゲーションモデルである。",
   "price_range": {
     "new": { "min": null, "max": null },
     "used": { "min": 7150000, "max": 7678000 }
@@ -25,15 +17,27 @@
   "timeline": [
     {
       "id": "honda-vfr750r-rc30",
-      "is_current": false,
-      "model_code": "RC30",
-      "emission_code": null,
-      "release_years": [1987, 1988],
       "slug": "vfr750r-rc30",
+      "model_code": "RC30",
+      "is_current": false,
+      "references": [
+        {
+          "title": "バイクブロス",
+          "urls": ["https://www.bikebros.co.jp/catalog/1/65_12/"],
+          "last_verified_at": "2026-02-12"
+        }
+      ],
+      "release": [
+        {
+          "year": 1987,
+          "month": 8,
+          "model_change_type": "新登場"
+        }
+      ],
+      "emission_code": null,
       "profile": "1987年に発売された国内仕様モデル。RVF750の技術を直接フィードバックした究極のレーサーレプリカとして登場した。",
       "basic_info": {
         "grade_name": "VFR750R",
-        "model_change_type": "新登場",
         "ride_capacity": 1,
         "min_turning_radius_m": 3.3,
         "categories": ["レーサーレプリカ"]
@@ -64,7 +68,6 @@
         "compression_ratio": 11.0,
         "ps": 77,
         "ps_rpm": 9500,
-        "kw": 56,
         "torque_kgf_m": 7.1,
         "torque_nm": 69,
         "torque_rpm": 7000,
@@ -103,7 +106,7 @@
         "chain": { "size": "525", "links": 106 }
       },
       "chassis_and_suspension": {
-        "frame_type": "ダイヤモンド（アルミツインチューブ）",
+        "frame_type": "アルミツインチューブ",
         "suspension_front_type": "正立フォーク",
         "suspension_rear_type": "スイングアーム式",
         "suspension_rear_shock_qty": 1
@@ -137,7 +140,7 @@
         "display_type": "アナログ",
         "tachometer": true
       },
-      "equipment": {}
+      "equipment": null
     }
   ]
 }

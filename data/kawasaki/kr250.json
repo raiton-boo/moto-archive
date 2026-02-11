@@ -1,23 +1,21 @@
 {
-  "$schema": "../schema.json",
+  "$schema": "../schema.jsonc",
   "maker": "Kawasaki",
   "model": "KR250",
   "displacement_class": 250,
   "slug": "kawasaki-kr250",
-  "assets_dir": "/assets/images/kawasaki/kr250/",
-  "thumbnail": "kr250a-green.png",
   "status": "published",
   "metadata": {
     "created_at": {
       "iso": "2026-02-06T01:20:00Z",
-      "label": "2026-02-06 01:20"
+      "label": "2026-02-06 01:37"
     },
     "updated_at": {
       "iso": "2026-02-06T01:20:00Z",
-      "label": "2026-02-06 01:20"
+      "label": "2026-02-12 01:13"
     }
   },
-  "profile": "1984年に登場したカワサキ初の2ストローク・レーサーレプリカ。WGP参戦マシンで採用されていた「タンデムツイン（直列縦置2気筒）」レイアウトを市販車として再現。吸気形式にロータリーディスクバルブを採用するなど、他メーカーのレプリカとは一線を画す独創的なメカニズムが特徴である。",
+  "overview": "1984年に登場したカワサキ初の2ストローク・レーサーレプリカ。WGP参戦マシンで採用されていた「タンデムツイン（直列縦置2気筒）」レイアウトを市販車として再現。吸気形式にロータリーディスクバルブを採用するなど、他メーカーのレプリカとは一線を画す独創的なメカニズムが特徴である。",
   "price_range": {
     "new": { "min": null, "max": null },
     "used": { "min": 899900, "max": 1299900 }
@@ -25,17 +23,27 @@
   "timeline": [
     {
       "id": "kawasaki-kr250-kr250a",
-      "is_current": false,
-      "model_code": "KR250A",
-      "emission_code": null,
-      "release_years": [1984],
-      "release_month": 4,
-      "market_spec": "国内向けモデル",
       "slug": "kr250-kr250a",
+      "model_code": "KR250A",
+      "is_current": false,
+      "references": [
+        {
+          "title": "バイクブロス",
+          "urls": ["https://www.bikebros.co.jp/catalog/4/46_2/"],
+          "last_verified_at": "2026-02-12"
+        }
+      ],
+      "release": [
+        {
+          "year": 1984,
+          "month": 4,
+          "model_change_type": "新登場"
+        }
+      ],
+      "emission_code": null,
       "profile": "1984年に発売された初期型モデル。水冷2ストローク・タンデムツインエンジンは最高出力45PSを発揮。独特の排気音と加速特性を持つ。",
       "basic_info": {
         "grade_name": "KR250",
-        "model_change_type": "新登場",
         "ride_capacity": 2,
         "min_turning_radius_m": null,
         "categories": ["レーサーレプリカ"]
@@ -136,7 +144,9 @@
       "lighting": {
         "headlight_std": "60W/55W",
         "taillight_std": "27W/8W"
-      }
+      },
+      "meter": null,
+      "equipment": null
     }
   ]
 }

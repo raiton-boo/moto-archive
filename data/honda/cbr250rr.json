@@ -1,23 +1,15 @@
 {
-  "$schema": "../schema.json",
+  "$schema": "../schema.jsonc",
   "maker": "Honda",
   "model": "CBR250RR",
   "displacement_class": 250,
   "slug": "honda-cbr250rr",
-  "assets_dir": "/assets/images/honda/cbr250rr/",
-  "thumbnail": "mc51-42ps-grandprix-red.png",
   "status": "published",
   "metadata": {
-    "created_at": {
-      "iso": "2026-01-31T16:36:00Z",
-      "label": "2026-01-31 16:36"
-    },
-    "updated_at": {
-      "iso": "2026-01-31T23:55:00Z",
-      "label": "2026-01-31 23:55"
-    }
+    "created_at": { "iso": "2026-01-31T16:36:00Z", "label": "2026-01-31 16:36" },
+    "updated_at": { "iso": "2026-02-12T00:21:00Z", "label": "2026-02-12 01:10" }
   },
-  "profile": "1990年(MC22)と2017年(MC51)に登場。世代を超えてクラス最高峰を追求し続けるクォーター・スーパースポーツ。",
+  "overview": "1990年(MC22)と2017年(MC51)に登場。世代を超えてクラス最高峰を追求し続けるクォーター・スーパースポーツ。",
   "price_range": {
     "new": { "min": 724000, "max": 1012000 },
     "used": { "min": 376100, "max": 2200000 }
@@ -25,18 +17,37 @@
   "timeline": [
     {
       "id": "honda-cbr250rr-mc22-45ps",
-      "is_current": false,
-      "model_code": "MC22",
-      "emission_code": null,
-      "release_years": [1990, 1991, 1992],
       "slug": "cbr250rr-mc22-45ps",
+      "model_code": "MC22",
+      "is_current": false,
+      "references": [
+        {
+          "title": "ホンダ Fact Book",
+          "urls": ["https://www.honda.co.jp/factbook/motor/CBR250RR/19900300/011.html"],
+          "last_verified_at": "2026-02-12"
+        },
+        {
+          "title": "バイクブロス",
+          "urls": [
+            "https://www.bikebros.co.jp/catalog/1/5_16/2534/#spec_top",
+            "https://www.bikebros.co.jp/catalog/1/5_16/2533/#spec_top",
+            "https://www.bikebros.co.jp/catalog/1/5_16/2534/#spec_top"
+          ],
+          "last_verified_at": "2026-02-12"
+        }
+      ],
+      "release": [
+        { "year": 1990, "month": 3, "model_change_type": "新登場" },
+        { "year": 1991, "month": 1, "model_change_type": "カラーチェンジ" },
+        { "year": 1992, "month": 5, "model_change_type": "カラーチェンジ" }
+      ],
+      "emission_code": null,
       "profile": "250cc超高回転型4気筒スーパースポーツ。アルミツインチューブフレームとガルアームを採用し、徹底した低重心と慣性マス集中を実現した規制前45PSモデル。",
       "basic_info": {
         "grade_name": "CBR250RR",
-        "model_change_type": "新登場",
         "ride_capacity": 2,
-        "categories": ["レーサーレプリカ"],
-        "min_turning_radius_m": 2.9
+        "min_turning_radius_m": 2.9,
+        "categories": ["レーサーレプリカ"]
       },
       "dimensions": {
         "length_mm": 1975,
@@ -53,7 +64,7 @@
       "engine": {
         "model": "MC14E",
         "type": "4ストローク",
-        "layout": "並列（直列）",
+        "layout": "並列",
         "cylinders": 4,
         "cooling": "水冷",
         "displacement_cc": 249,
@@ -63,7 +74,6 @@
         "stroke_mm": 33.8,
         "compression_ratio": 11.5,
         "ps": 45,
-        "kw": 33,
         "ps_rpm": 15000,
         "torque_kgf_m": 2.5,
         "torque_nm": 25,
@@ -133,20 +143,32 @@
       "lighting": {
         "headlight_std": "60/35W"
       },
-      "meter": {},
-      "equipment": {}
+      "meter": null,
+      "equipment": null
     },
     {
       "id": "honda-cbr250rr-mc22-40ps",
-      "is_current": false,
-      "model_code": "MC22",
-      "emission_code": null,
-      "release_years": [1994],
       "slug": "cbr250rr-mc22-40ps",
+      "model_code": "MC22",
+      "is_current": false,
+      "references": [
+        {
+          "title": "バイクブロス",
+          "urls": ["https://www.bikebros.co.jp/catalog/1/5_16/2535/#spec_top"],
+          "last_verified_at": "2026-02-12"
+        }
+      ],
+      "release": [
+        {
+          "year": 1994,
+          "month": 6,
+          "model_change_type": "マイナーチェンジ"
+        }
+      ],
+      "emission_code": null,
       "profile": "カムギアトレーンを継承しつつ、中低速域の出力を強化した自主規制対応40PSモデル。CBR900RR譲りのデザインを採用したMC22最終型。",
       "basic_info": {
         "grade_name": "CBR250RR",
-        "model_change_type": "マイナーチェンジ",
         "ride_capacity": 2,
         "categories": ["レーサーレプリカ"],
         "min_turning_radius_m": 2.9
@@ -176,7 +198,6 @@
         "stroke_mm": 33.8,
         "compression_ratio": 11.5,
         "ps": 40,
-        "kw": 29,
         "ps_rpm": 14500,
         "torque_kgf_m": 2.4,
         "torque_nm": 24,
@@ -246,20 +267,38 @@
       "lighting": {
         "headlight_std": "60/35W"
       },
-      "meter": {},
-      "equipment": {}
+      "meter": null,
+      "equipment": null
     },
     {
       "id": "honda-cbr250rr-mc51-38ps",
-      "is_current": false,
-      "model_code": "MC51",
-      "emission_code": "2BK-MC51",
-      "release_years": [2017, 2018, 2019],
       "slug": "cbr250rr-mc51-38ps",
+      "model_code": "MC51",
+      "is_current": false,
+      "references": [
+        {
+          "title": "バイクブロス",
+          "urls": [
+            "https://www.bikebros.co.jp/catalog/1/5_16/2529/#spec_top",
+            "https://www.bikebros.co.jp/catalog/1/5_16/13441/#spec_top"
+          ],
+          "last_verified_at": "2026-02-12"
+        }
+      ],
+      "release": [
+        {
+          "year": 2017,
+          "month": 5,
+          "model_change_type": "カラーチェンジ"
+        },
+        {
+          "model_change_type": "カラーチェンジ"
+        }
+      ],
+      "emission_code": "2BK",
       "profile": "2017年に登場したCBR250RR(MC51)のスタンダードモデル。スロットル・バイ・ワイヤシステムや倒立フォーク、3つのライディングモードなど、クラスを超えた装備を搭載し「操る喜び」を具現化したスーパースポーツ。",
       "basic_info": {
         "grade_name": "CBR250RR",
-        "model_change_type": "新登場",
         "ride_capacity": 2,
         "categories": ["スーパースポーツ"],
         "min_turning_radius_m": 2.9
@@ -288,7 +327,6 @@
         "stroke_mm": 41.3,
         "compression_ratio": 11.5,
         "ps": 38,
-        "kw": 28,
         "ps_rpm": 12500,
         "torque_kgf_m": 2.3,
         "torque_nm": 23,
@@ -384,15 +422,41 @@
     },
     {
       "id": "honda-cbr250rr-mc51-abs-38ps",
-      "is_current": false,
-      "model_code": "MC51",
-      "emission_code": "2BK-MC51",
-      "release_years": [2017, 2018, 2019],
       "slug": "cbr250rr-mc51-abs-38ps",
+      "model_code": "MC51",
+      "is_current": false,
+      "emission_code": "2BK",
+      "references": [
+        {
+          "title": "バイクブロス",
+          "urls": [
+            "https://www.bikebros.co.jp/catalog/1/5_16/2530/#spec_top",
+            "https://www.bikebros.co.jp/catalog/1/5_16/12846/#spec_top",
+            "https://www.bikebros.co.jp/catalog/1/5_16/13442/#spec_top"
+          ],
+          "last_verified_at": "2026-02-12"
+        }
+      ],
+      "release": [
+        {
+          "year": 2017,
+          "month": 5,
+          "model_change_type": "新登場"
+        },
+        {
+          "year": 2018,
+          "month": 4,
+          "model_change_type": "カラーチェンジ"
+        },
+        {
+          "year": 2018,
+          "month": 12,
+          "model_change_type": "カラーチェンジ"
+        }
+      ],
       "profile": "2017年に登場したCBR250RR(MC51)のABS搭載モデル。250ccクラス初のスロットル・バイ・ワイヤシステム採用に加え、前後にABS（アンチロック・ブレーキ・システム）を標準装備し、高い制動時の安心感を提供。",
       "basic_info": {
         "grade_name": "CBR250RR ABS",
-        "model_change_type": "新登場",
         "ride_capacity": 2,
         "categories": ["スーパースポーツ"],
         "min_turning_radius_m": 2.9
@@ -421,7 +485,6 @@
         "stroke_mm": 41.3,
         "compression_ratio": 11.5,
         "ps": 38,
-        "kw": 28,
         "ps_rpm": 12500,
         "torque_kgf_m": 2.3,
         "torque_nm": 23,
@@ -516,15 +579,35 @@
     },
     {
       "id": "honda-cbr250rr-mc51-41ps",
-      "is_current": false,
-      "model_code": "MC51",
-      "emission_code": "2BK-MC51",
-      "release_years": [2020, 2021, 2022],
       "slug": "cbr250rr-mc51-41ps",
+      "model_code": "MC51",
+      "is_current": false,
+      "references": [
+        {
+          "title": "バイクブロス",
+          "urls": [
+            "https://www.bikebros.co.jp/catalog/1/5_16/15266/#spec_top",
+            "https://www.bikebros.co.jp/catalog/1/5_16/15967/#spec_top"
+          ],
+          "last_verified_at": "2026-02-12"
+        }
+      ],
+      "release": [
+        {
+          "year": 2020,
+          "month": 9,
+          "model_change_type": "マイナーチェンジ"
+        },
+        {
+          "year": 2022,
+          "month": 1,
+          "model_change_type": "カラーチェンジ"
+        }
+      ],
+      "emission_code": "2BK",
       "profile": "250cc（軽二輪）クラスのフルカウルスポーツ、CBR250RR（MC51)が、マイナーチェンジを受けた。新形状のピストン採用やマフラー内部構造の変更などによって、従来比+3ps（41ps）の最高出力と+2Nm（25Nm）の最大トルクを得ていた。また、クラッチレバーの操作負荷の軽減と、シフトダウン時の後輪安定性を向上させるアシスト＆スリッパークラッチを採用した。また、純正オプションとて、クイックシフターも準備された。ABS（アンチロックブレーキシステム）を標準搭載。",
       "basic_info": {
         "grade_name": "CBR250RR",
-        "model_change_type": "マイナーチェンジ",
         "ride_capacity": 2,
         "categories": ["スーパースポーツ"],
         "min_turning_radius_m": 2.9
@@ -553,7 +636,6 @@
         "stroke_mm": 41.3,
         "compression_ratio": 12.1,
         "ps": 41,
-        "kw": 30,
         "ps_rpm": 13000,
         "torque_kgf_m": 2.5,
         "torque_nm": 25,
@@ -650,15 +732,35 @@
     },
     {
       "id": "honda-cbr250rr-mc51-42ps",
-      "is_current": true,
-      "model_code": "MC51",
-      "emission_code": "8BK-MC51",
-      "release_years": [2023, 2024, 2025],
       "slug": "cbr250rr-mc51-42ps",
+      "model_code": "MC51",
+      "is_current": true,
+      "references": [
+        {
+          "title": "バイクブロス",
+          "urls": [
+            "https://www.bikebros.co.jp/catalog/1/5_16/16311/#spec_top",
+            "https://www.bikebros.co.jp/catalog/1/5_16/17262/#spec_top"
+          ],
+          "last_verified_at": "2026-02-12"
+        }
+      ],
+      "release": [
+        {
+          "year": 2023,
+          "month": 2,
+          "model_change_type": "マイナーチェンジ"
+        },
+        {
+          "year": 2025,
+          "month": 3,
+          "model_change_type": "カラーチェンジ"
+        }
+      ],
+      "emission_code": "8BK",
       "profile": "平成32年（令和2年）排ガス規制に適合し、排気ガス記号を含めた型式は、8BK-MC51と改められた。外観はキープコンセプトながら、フロントからサイドにかけてレイヤー構造となり、よりエッジを利かせたデザインとなった。並列2気筒エンジンは、規制をクリアしつつ、細部の見直しでこれまでよりも1PSアップの42PSとなった。また、トラクションコントロールを装備。フロントの倒立フォークにはショーワ製のSFF-BP（セパレート・ファンクション・フロントフォーク・ビッグピストン）が採用された。ハザードランプも新装備。",
       "basic_info": {
         "grade_name": "CBR250RR",
-        "model_change_type": "マイナーチェンジ",
         "ride_capacity": 2,
         "categories": ["スーパースポーツ"],
         "min_turning_radius_m": 2.9
@@ -687,7 +789,6 @@
         "stroke_mm": 41.3,
         "compression_ratio": 12.5,
         "ps": 42,
-        "kw": 31,
         "ps_rpm": 13500,
         "torque_kgf_m": 2.5,
         "torque_nm": 25,
