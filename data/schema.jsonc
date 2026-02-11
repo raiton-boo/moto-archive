@@ -98,7 +98,15 @@
             "additionalProperties": false,
             "properties": {
               "title": { "description": "参照資料タイトル", "type": "string" },
-              "url": { "description": "参照先のURL", "type": "string", "format": "uri" },
+              "urls": {
+                "description": "参照先のURLリスト",
+                "type": "array",
+                "minItems": 1,
+                "items": {
+                  "type": "string",
+                  "format": "uri"
+                }
+              },
               "last_verified_at": { "description": "情報の最終確認日", "type": "string", "format": "date" }
             }
           }
