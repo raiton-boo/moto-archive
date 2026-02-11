@@ -9,6 +9,3 @@
 
 # Docker Compose environment files
 docker-compose.yaml
-
-# Jujutsu control folder
-/.jj/
