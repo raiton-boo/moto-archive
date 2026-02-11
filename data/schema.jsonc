@@ -130,7 +130,6 @@
             "categories": {
               "description": "カテゴリ",
               "type": ["array", "null"],
-              "additionalProperties": false,
               "items": {
                 "type": "string",
                 "enum": [
