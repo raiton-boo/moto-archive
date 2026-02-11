@@ -5,6 +5,7 @@
   "description": "国内外の市販オートバイのスペックと詳細情報を保存するためのマスターデータ定義",
   "type": "object",
   "required": ["$schema", "maker", "model", "slug", "status", "metadata", "timeline"],
+  "additionalProperties": false,
   "properties": {
     "$schema": {
       "description": "スキーマのパス",
