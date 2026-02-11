@@ -4,8 +4,12 @@
   "title": "Motor Archive Schema v10.0.0",
   "description": "国内外の市販オートバイのスペックと詳細情報を保存するためのマスターデータ定義",
   "type": "object",
-  "required": ["maker", "model", "slug", "status", "metadata", "timeline"],
+  "required": ["$schema", "maker", "model", "slug", "status", "metadata", "timeline"],
   "properties": {
+    "$schema": {
+      "description": "スキーマのパス",
+      "type": "string"
+    },
     "maker": { "description": "メーカー名", "type": "string", "enum": ["Honda", "Yamaha", "Suzuki", "Kawasaki"] },
     "model": { "description": "モデル名(車名)", "type": "string" },
     "displacement_class": {
