@@ -94,7 +94,7 @@
           "type": ["array", "null"],
           "items": {
             "type": "object",
-            "required": ["title", "url", "last_verified_at"],
+            "required": ["title", "urls", "last_verified_at"],
             "additionalProperties": false,
             "properties": {
               "title": { "description": "参照資料タイトル", "type": "string" },
